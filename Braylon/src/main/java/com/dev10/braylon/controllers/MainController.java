@@ -78,6 +78,7 @@ public abstract class MainController {
     @PostMapping("/addCustomer")
     public String addNewCustomer() {
         
+        return "redirect:/home";
     }
     
     @GetMapping("/editCustomer/{customerId}")
