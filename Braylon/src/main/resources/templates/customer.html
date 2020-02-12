@@ -30,7 +30,7 @@
             </thead>
             <tbody>
                 <tr th:each="customer : ${customers}">
-                    <td th:text="${customer.name}">Mark Otto</td>
+                    <td th:text="${customer.customerFirstName + ' ' + customer.lastName}">Mark Otto</td>
                     <td class="salesRepLink"><a th:text="${customer.salesRep.name}" href="#"
                             th:href="${'/salesRep/' + customer.salesRep.salesRepID}">Blobbly Blandlerslon</a></td>
                     <td class="customerLink"><a class="btn btn-warning text-danger" href="#"

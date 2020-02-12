@@ -18,16 +18,16 @@
   <div class="container">
     <h1>Add/Edit Customer</h1>
     <form>
-      <input type="hidden" class="form-control" name="customerID" id="customerID" aria-describedby="customer id help">
+      <input type="hidden" class="form-control" name="customerId" id="customerId" th:value="${customer.customerId}">
       <div class="form-group">
-        <label for="exampleInputEmail1">First Name</label>
-        <input type="text" class="form-control" name="firstName" id="firstName" aria-describedby="firstNameHelp"
-          placeholder="Enter first name" th:value="${customer.firstName}">
+        <label for="customerFirstName">First Name</label>
+        <input type="text" class="form-control" name="customerFirstName" id="customerFirstName" aria-describedby="customerFirstNameHelp"
+          placeholder="Enter first name" th:value="${customer.customerFirstName}">
       </div>
       <div class="form-group">
-        <label for="lastName">Last Name</label>
-        <input type="text" class="form-control" name="lastName" id="lastName" aria-describedby="lastNameHelp"
-          placeholder="Enter last Name" th:value="${customer.lastName}">
+        <label for="customerLastName">Last Name</label>
+        <input type="text" class="form-control" name="customerLastName" id="customerLastName" aria-describedby="customerLastNameHelp"
+          placeholder="Enter last Name" th:value="${customer.customerLastName}">
       </div>
       <div class="form-group">
         <label for="address">Address</label>
