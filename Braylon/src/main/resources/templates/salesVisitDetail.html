@@ -21,34 +21,34 @@
             <input type="hidden" class="form-control" name="salesVisitId" id="salesVisitId"
                 th:value="${salesVisit.salesVisitId}">
             <input type="hidden" class="form-control" name="customerId" id="customerId"
-                th:value="${order.customer.customerId}">
+                th:value="${salesVisit.customer.customerId}">
             <div class="form-group">
                 <label for="userName">Visit date</label>
                 <input type="date" class="form-control" th:name="visitDate" id="visitDate"
-                    aria-describedby="visitDateHelp" placeholder="02-12-2020">
+                    aria-describedby="visitDateHelp" placeholder="02-12-2020" th:value="${salesVisit.visitDate}">
             </div>
             <div class="form-group">
                 <label for="location">Location</label>
                 <input type="location" class="form-control" id="location" aria-describedby="locationHelp"
-                    placeholder="Enter location">
+                    placeholder="Enter location" th:value="${salesVisit.location}">
             </div>
             <div class="form-group">
                 <label for="orderPrice">Price</label>
                 <textarea class="form-control" name="notes" id="visitNotes" aria-describedby="visitNotesHelp"
-                    placeholder="Enter notes" th:value="${visit.notes}">
+                    placeholder="Enter notes" th:value="${salesVisit.notes}">
                 </textarea>
             </div>
             <div class="form-group col">
                 <label for="userSelect">Sales Rep.</label>
                 <select class="form-control" id="userSelect" name="user">
-                    <option selected value="100" th:value="0" th:selected="${order.user == null}">- Select -
+                    <option selected value="100" th:value="0" th:selected="${salesvisit.user == null}">- Select -
                     </option>
                     <option th:each="user : ${users}" th:text="${user.firstName + ' ' + user.lastName}"
-                        th:value="${user.userID}" th:selected="${user.equals(order.user)}">
+                        th:value="${user.userID}" th:selected="${user.equals(salesvisit.user)}">
                         Sally SalesRep</option>
                 </select>
-                <div th:if="${#fields.hasErrors('order.user')}">
-              <p th:each="error : ${#fields.errors('order.user')}" class="alert alert-danger" th:text="${error}">
+                <div th:if="${#fields.hasErrors('salesvisit.user')}">
+              <p th:each="error : ${#fields.errors('salesvisit.user')}" class="alert alert-danger" th:text="${error}">
                   Bad name </p>
           </div>
         </div>

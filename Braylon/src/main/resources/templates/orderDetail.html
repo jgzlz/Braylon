@@ -24,17 +24,17 @@
             <div class="form-group">
                 <label for="userName">Date Requested</label>
                 <input type="date" class="form-control" th:name="orderDate" id="orderDate" aria-describedby="orderDateHelp"
-                    placeholder="02-12-2020">
+                    placeholder="02-12-2020" th:value="${order.orderDate}">
             </div>
             <div class="form-group">
                 <label for="userName">Date Fulfilled</label>
                 <input type="date" class="form-control" th:name="fulfillmentDate" id="fulfillmentDate" aria-describedby="fulfillmentDateHelp"
-                    placeholder="02-12-2020">
+                    placeholder="02-12-2020" th:value="${order.fulfillmentDate}">
             </div>
             <div class="form-group">
                 <label for="status">Status</label>
                 <input type="status" class="form-control" id="status" aria-describedby="statusHelp"
-                    placeholder="Enter status">
+                    placeholder="Enter status" th:value="${order.status}">
             </div>
             <div class="form-group">
                 <label for="orderPrice">Price</label>
