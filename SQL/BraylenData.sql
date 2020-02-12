@@ -8,7 +8,8 @@ insert into Customer values
 insert into User values 
 (1,'Mayzer','mayzer@mayzer.com','$2a$10$IuKgHhWowwrQt9i5IgxB6uU.3Mr5l32DiRCbddTfP1vptAnW5BwWe',1,'Mayzer','Muhammed'),
 (2,'Jake','jake@jake.com','$2a$10$IuKgHhWowwrQt9i5IgxB6uU.3Mr5l32DiRCbddTfP1vptAnW5BwWe',1,'Jake','White'),
-(3,'Marcus','marcus@marcus.com','$2a$10$IuKgHhWowwrQt9i5IgxB6uU.3Mr5l32DiRCbddTfP1vptAnW5BwWe',1,'Marcus','Elliott');
+(3,'Marcus','marcus@marcus.com','$2a$10$IuKgHhWowwrQt9i5IgxB6uU.3Mr5l32DiRCbddTfP1vptAnW5BwWe',1,'Marcus','Elliott'),
+(4,'MangoJ','mango.johnson@braylon.com','$2a$10$IuKgHhWowwrQt9i5IgxB6uU.3Mr5l32DiRCbddTfP1vptAnW5BwWe',1,'Mango','Johnson');
 
 insert into `Order` values 
 (1,1,'2020-02-12','2020-03-12','pending','20123.12','1'),
@@ -16,9 +17,11 @@ insert into `Order` values
 (3,1,'2020-02-12','2020-03-12','pending','5342.12','2'),
 (4,2,'2020-02-12','2020-03-12','pending','2123.12','3');
 
+insert into userRole values
+(1,1),(1,2),(2,1),(2,2),(3,1),(3,2),(4,1);
 
 insert into `Role` values 
-(1,'Admin'), (2,'SalesRep'), (3,'Executive');
+(1,'ROLE_USER'), (2,'ROLE_ADMIN');
 
 insert into `Product` values 
 (1,'Screen',23,1234.12),

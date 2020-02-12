@@ -46,15 +46,8 @@ create table `userRole`(
 	userId int not null,
 	roleId int not null,
 	primary key(userId,roleId),
-	foreign key (userId) references User(userId),
-	foreign key (roleId) references Role(roleId)
-);
-
-insert into userRole values (1,2),(2,1),(3,3);create table `Product` (
-	productId int primary key auto_increment,
-    productName varchar(50) not null,
-    inventory int not null,
-    price decimal not null
+	foreign key (userId) references `User`(userId),
+	foreign key (roleId) references `Role`(roleId)
 );
 
 create table orderProduct(
