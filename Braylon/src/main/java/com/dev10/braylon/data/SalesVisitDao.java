@@ -30,5 +30,5 @@ public interface SalesVisitDao extends JpaRepository<SalesVisit, Integer> {
 
     @Query(value = "SELECT s.* FROM Salesvisit s JOIN user u ON s.userId = u.userId WHERE u.username = ?1",
             nativeQuery = true)
-    public List<SalesVisit> findSalesByUSername(String username);
+    public List<SalesVisit> findSalesByUsername(String username);
 }
