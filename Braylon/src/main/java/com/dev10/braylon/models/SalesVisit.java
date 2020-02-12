@@ -47,52 +47,6 @@ public class SalesVisit {
 //    @ManyToOne
 //    @JoinColumn(name = "orderId")
 //    private Order order;
-    public Integer getSalesVisitId() {
-        return salesVisitId;
-    }
-
-    public void setSalesVisitId(Integer salesVisitId) {
-        this.salesVisitId = salesVisitId;
-    }
-
-    public LocalDate getVisitDate() {
-        return visitDate;
-    }
-
-    public void setVisitDate(LocalDate visitDate) {
-        this.visitDate = visitDate;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public String getNotes() {
-        return notes;
-    }
-
-    public void setNotes(String notes) {
-        this.notes = notes;
-    }
+    
 }
 

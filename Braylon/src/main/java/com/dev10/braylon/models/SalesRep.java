@@ -5,33 +5,29 @@
  */
 package com.dev10.braylon.models;
 
-//import javax.persistence.Entity;
-
 import java.io.Serializable;
-import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-
 /**
  *
  * @author Dev10
  */
 @Entity
-public class Customer implements Serializable {
+public class SalesRep implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer customerId;
+    private Integer salesRepId;
     
     @Column(nullable = false)
-    private String customerFirstName;
+    private String salesRepFirstName;
     
     @Column(nullable = false)
-    private String customerLastName;
+    private String salesRepLastName;
     
     @Column(nullable = false)
     private String companyName;
@@ -44,5 +40,4 @@ public class Customer implements Serializable {
 
     @Column(nullable = false)
     private String email;
-
 }

@@ -44,7 +44,7 @@ public class RoleDaoTest {
     @AfterEach
     public void tearDown() {
     }
-
+    
     /**
      * Test of findRoleByRole method, of class RoleDao.
      */
