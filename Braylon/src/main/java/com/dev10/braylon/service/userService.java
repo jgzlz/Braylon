@@ -33,7 +33,7 @@ public class userService {
     }
     
     public List<SalesVisit> findAllSalesVisitsByUsername(String username) {
-        List<SalesVisit> salesVisits = salesVisitDao.findSalesByUSername(username);
+        List<SalesVisit> salesVisits = salesVisitDao.findSalesByUsername(username);
         
         return salesVisits;
     }
