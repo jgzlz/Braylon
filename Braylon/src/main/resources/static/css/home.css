@@ -1,0 +1,27 @@
+body{
+  background-color: 3A3355;
+}
+
+h1, h2, h3, h4, h5, h6,p {
+ color: EDF1DF;
+}
+
+.container{
+  margin:10px auto;
+  width:100%;
+  height:1000px
+}
+
+.col{
+   color: F36D54;
+}
+
+.titleLink{
+   color: F36D54;
+}
+
+div {
+    border-width:2px;  
+    border-style:ridge;
+    border-color: #ffc784;
+}
