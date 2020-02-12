@@ -68,7 +68,7 @@ public abstract class MainController {
             custList = cServ.findAllCustomersByUsername(currentUser.getUsername());
         }
         model.addAttribute("customers", custList);
-        return "customers";
+        return "customer";
     }
     
     //Adding Customer
@@ -78,7 +78,7 @@ public abstract class MainController {
             model.addAttribute("salesReps", uServ.findAllSalesReps());
         }
         model.addAttribute("customer", null);
-        return "customerDetails";
+        return "customerDetail";
     }
     
     @PostMapping("/addCustomer")
@@ -88,17 +88,17 @@ public abstract class MainController {
     }
     
     //Editing Customer
-    @GetMapping("/editCustomer/{customerId}")
+    @GetMapping("/customer/{customerId}")
     public String loadEditCustomer(Model model, @PathVariable int customerId) {
         Customer customer = cServ.findCustomerById(customerId);
         if(userIsAdmin()) {
             model.addAttribute("salesReps", uServ.findAllSalesReps());
         }
         model.addAttribute("customer", customer);
-        return "customerDetails";
+        return "customerDetail";
     }
     
-    @PostMapping("/editCustomer/{customerId}")
+    @PostMapping("/customer/{customerId}")
     public String editCustomer(@PathVariable int customerId, Customer customer) {
         cServ.editCustomer(customer);
         return "redirect:/home";
@@ -107,7 +107,8 @@ public abstract class MainController {
     //Adding SalesRep
     @GetMapping("/addSalesRep")
     public String loadAddingSalesRep() {
-        return "salesRepDetails";
+        //add header to differenciate
+        return "salesRepDetail";
     }
     
     @PostMapping("/addSalesRep")
@@ -118,14 +119,14 @@ public abstract class MainController {
     }
     
     //Editing SalesRep
-    @GetMapping("/editSalesRep/{username}")
+    @GetMapping("/salesRep/{username}")
     public String loadEditSalesRep(Model model, @PathVariable String username) {
         User user = uServ.findUserByUsername(username);
         model.addAttribute("salesRep", user);
-        return "salesRepDetails";
+        return "salesRepDetail";
     }
     
-    @PostMapping("/editSalesRep/{username}")
+    @PostMapping("/salesRep/{username}")
     public String editSalesRep(@PathVariable String username, User user) {
         uServ.editUser(user);
         return "redirect:/home";
@@ -136,7 +137,7 @@ public abstract class MainController {
     public String viewAddSalesVisit(Model model) {
         List<Customer> customers = cServ.findAllCustomersByUsername(currentUser.getUsername());
         model.addAttribute("customers", customers);
-        return "addSalesVisit";
+        return "salesVisitDetail";
     }
     
     @PostMapping("/addSalesVisit")
@@ -152,7 +153,7 @@ public abstract class MainController {
         model.addAttribute("customers", customers);
         List<Product> products = pServ.findAllProducts();
         model.addAttribute("products", products);
-        return "addOrder";
+        return "orderDetail";
     }
     
     @PostMapping("/addOrder")
