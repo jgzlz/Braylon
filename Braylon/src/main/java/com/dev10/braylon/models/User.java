@@ -7,7 +7,7 @@ package com.dev10.braylon.models;
 
 import java.util.List;
 import java.util.Objects;
-import javax.management.relation.Role;
+import com.dev10.braylon.models.Role;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
