@@ -38,5 +38,9 @@ public class userService {
         return salesVisits;
     }
        
-    
+    public List<User> findAllSalesReps() {
+        List<User> myUsers = dao.findAllSalesReps();
+        
+        return myUsers;
+    }
 }
