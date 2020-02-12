@@ -46,11 +46,23 @@ public class userService {
 
     public void addUser(User user) {
         //Validations
+        if(dao.findUserByUsername(user.getUsername()) != null) {
+            return;
+        }
+        if(user.getEmail() == null || user.getFirstName() == null || user.getLastName() == null || user.getUsername() == null) {
+            return;
+        }
         dao.save(user);
     }
 
     public void editUser(User user) {
         //Validations
+        if(dao.findUserByUsername(user.getUsername()) == null) {
+            return;
+        }
+        if(user.getEmail() == null || user.getFirstName() == null || user.getLastName() == null || user.getUsername() == null) {
+            return;
+        }
         dao.save(user);
     }
 }

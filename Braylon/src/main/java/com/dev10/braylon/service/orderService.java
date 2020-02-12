@@ -13,6 +13,9 @@ public class orderService {
     
     public void addOrder(Order order) {
         //Validate
+        if(order.getCustomer() == null || order.getOrderDate() == null || order.getPrice() == null || order.getProducts() == null || order.getProducts().size() == 0 || order.getStatus() == null) {
+            return;
+        }
         dao.save(order);
     }
     

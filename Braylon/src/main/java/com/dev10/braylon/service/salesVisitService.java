@@ -13,6 +13,9 @@ public class salesVisitService {
     
     public void addSalesVisit(SalesVisit visit) {
         //Validate
+        if(visit.getCustomer() == null || visit.getLocation() == null || visit.getUser() == null || visit.getVisitDate() == null) {
+            return;
+        }
         dao.save(visit);
     }
     
