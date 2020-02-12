@@ -3,6 +3,7 @@ package com.dev10.braylon.controllers;
 
 import com.dev10.braylon.models.Order;
 import com.dev10.braylon.models.Customer;
+import com.dev10.braylon.models.Product;
 import com.dev10.braylon.models.Role;
 import com.dev10.braylon.models.SalesVisit;
 import com.dev10.braylon.models.User;
@@ -119,7 +120,7 @@ public abstract class MainController {
         return "salesRepDetails";
     }
     
-    @PostMapping("/editCustomer/{username}")
+    @PostMapping("/editSalesRep/{username}")
     public String editSalesRep(@PathVariable String username, User user) {
         uServ.editUser(user);
         return "redirect:/home";
@@ -127,27 +128,31 @@ public abstract class MainController {
     
     //Adding SalesVisit
     @GetMapping("/addSalesVisit")
-    public String viewAddSalesVisit(Model model, SalesVisit visit) {
-        
+    public String viewAddSalesVisit(Model model) {
+        List<Customer> customers = cServ.findAllCustomersByUsername(currentUser.getUsername());
+        model.addAttribute("customers", customers);
         return "addSalesVisit";
     }
     
     @PostMapping("/addSalesVisit")
-    public String processAddSalesVisit(Model model, SalesVisit visit) {
-        
+    public String processAddSalesVisit(SalesVisit visit) {
+        svServ.addSalesVisit(visit);
         return "redirect:/home";
     }
     
     //Adding Order
     @GetMapping("/addOrder")
     public String viewAddOrder(Model model, Order order) {
-        
+        List<Customer> customers = cServ.findAllCustomersByUsername(currentUser.getUsername());
+        model.addAttribute("customers", customers);
+        List<Product> products = pServ.findAllProducts();
+        model.addAttribute("products", products);
         return "addOrder";
     }
     
     @PostMapping("/addOrder")
-    public String processAddOrder(Principal principal, Model model, Order order) {
-        
+    public String processAddOrder(Principal principal, Order order) {
+        oServ.addOrder(order);
         return "redirect:/home";
     }
     
