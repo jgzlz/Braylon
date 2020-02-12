@@ -15,6 +15,7 @@ import com.dev10.braylon.service.userService;
 import java.security.Principal;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,6 +41,9 @@ public abstract class MainController {
     
     @Autowired
     private userService uServ;
+    
+    @Autowired
+    private BCryptPasswordEncoder encoder;
 
     @GetMapping("/home")
     public String loadHomePage(Model model) {
@@ -108,6 +112,7 @@ public abstract class MainController {
     
     @PostMapping("/addSalesRep")
     public String addNewSalesRep(User user) {
+        user.setPassword(encoder.encode(user.getPassword()));
         uServ.addUser(user);
         return "redirect:/home";
     }
