@@ -69,6 +69,7 @@ public abstract class MainController {
         if(userIsAdmin()) {
             model.addAttribute("salesReps", uServ.findAllSalesReps());
         }
+        model.addAttribute("customer", null);
         return "addCustomer";
     }
     
@@ -83,7 +84,7 @@ public abstract class MainController {
         if(userIsAdmin()) {
             model.addAttribute("salesReps", uServ.findAllSalesReps());
         }
-        
+        model.addAttribute("customer", customer);
         return "addCustomer";
     }
     
