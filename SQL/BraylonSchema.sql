@@ -4,6 +4,16 @@ create database braylon;
 
 use braylon;
 
+create table SalesRep(
+	salesRepId int primary key auto_increment,
+	salesRepFirstName varchar(50) not null,
+	salesRepLastName varchar(50) not null,
+    address varchar(50) not null,
+    phone varchar(50) not null,
+    companyName varchar(50) not null,
+    email varchar(50) not null
+);
+
 create table Customer (
 	customerId int primary key auto_increment,
     customerFirstName varchar(50) not null,
@@ -11,7 +21,9 @@ create table Customer (
     address varchar(50) not null,
     phone varchar(50) not null,
     companyName varchar(50) not null,
-    email varchar(50) not null
+    email varchar(50) not null,
+    salesRepId int not null,
+    foreign key (salesRepId) references SalesRep(salesRepId)
 );
 
 create table `User` (
@@ -35,7 +47,6 @@ create table `Order` (
     foreign key (userId) references User(userId),
     foreign key (customerId) references Customer(customerId)
 );
-
 create table `Role`(
 	roleId int primary key auto_increment,
 	role varchar(50) not null
@@ -50,7 +61,7 @@ create table `userRole`(
 	foreign key (roleId) references Role(roleId)
 );
 
-insert into userRole values (1,2),(2,1),(3,3);create table `Product` (
+create table `Product` (
 	productId int primary key auto_increment,
     productName varchar(50) not null,
     inventory int not null,
@@ -74,6 +85,9 @@ create table SalesVisit (
     foreign key (userId) references User(userId),
     foreign key (customerId) references Customer(customerId)
 );
+
+
+-- select * from Customer;
 -- select * from User;
 -- Select * from User u where username like "Beth";
 -- select * from SalesVisit;
