@@ -28,5 +28,14 @@ public class customerService {
         return cDao.findById(customerId).orElse(null);
     }
     
+    public void addCustomer(Customer customer) {
+        //Validations Here
+        cDao.save(customer);
+    }
+
+    public void editCustomer(Customer customer) {
+        //Validations Here
+        cDao.save(customer);
+    }
     
 }

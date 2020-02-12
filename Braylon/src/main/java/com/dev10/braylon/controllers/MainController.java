@@ -76,8 +76,9 @@ public abstract class MainController {
     }
     
     @PostMapping("/addCustomer")
-    public String addNewCustomer() {
-        
+    public String addNewCustomer(Customer customer) {
+        cServ.addCustomer(customer);
+        return "redirect:/home";
     }
     
     @GetMapping("/editCustomer/{customerId}")
@@ -90,7 +91,11 @@ public abstract class MainController {
         return "addCustomer";
     }
     
-    @PostMapping("/editCustomer")
+    @PostMapping("/editCustomer/{customerId}")
+    public String editCustomer(@PathVariable int customerId, Customer customer) {
+        cServ.editCustomer(customer);
+        return "redirect:/home";
+    }
     
     //Adding SalesVisit
     @GetMapping("/addSalesVisit")
