@@ -1,0 +1,95 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <th:block th:fragment="head(title)">
+            <!-- Required meta tags -->
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+            <!-- Bootstrap CSS -->
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+                integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+            <link rel="stylesheet" type="text/css" th:href="/css/theme.css" href="../static/css/theme.css">
+            <title th:text="${'Braylon: ' + title}">Workouts</title>
+        </th:block>
+    </head>
+    <th:block th:fragment="nav">
+        <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark" sec:authorize="isAnonymous()">
+            <a class="navbar-brand" href="/"><img th:src="/img/image.png" src="../static/img/image.png" title="home" width="100" height="50" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a href="createProfile" class="nav-link" sec:authorize="isAnonymous()">Create Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="workouts" class="nav-link" sec:authorize="isAnonymous()">Workouts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="about" class="nav-link" sec:authorize="isAnonymous()">About</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <div class=" col text-right" sec:authorize="isAnonymous()">
+                        <a href="/login" class="btn btn-success btn se">Login</a>
+                    </div>
+                </form>
+            </div>
+        </nav>
+        <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark " sec:authorize="isAuthenticated()">
+            <a class="navbar-brand" href="/"><img th:src="/img/image.png" src="../static/img/image.png" title="home" width="100" height="50" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" th:href="${'/profile/'+#authentication.name}" sec:authorize="isAuthenticated()">
+                            My
+                            Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="${'/goals/'+#authentication.name}" sec:authorize="isAuthenticated()">
+                            My
+                            Goals</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="${'/plan/'+#authentication.name}" sec:authorize="isAuthenticated()"> My
+                            Plan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/workouts" class="nav-link" sec:authorize="isAuthenticated()"> Workouts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/about" class="nav-link" sec:authorize="isAuthenticated()">About</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <div class=" col text-right m-6" sec:authorize="isAuthenticated()">
+                        <a href="/logout" class="btn btn-danger btn">Logout</a>
+                    </div>
+                </form>
+            </div>
+        </nav>
+    </th:block>
+
+    <body>
+        <th:block th:fragment="jsPlugins">
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+                integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+                crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+                integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+                crossorigin="anonymous"></script>
+        </th:block>
+    </body>
+
+</html>
