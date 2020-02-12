@@ -10,10 +10,6 @@ public class loginController extends MainController{
     
     @GetMapping("/login")
     public String viewLoginPage(Principal principal) {
-        
-        
-        currentUser = new User();
-        
         return "login";
     }
     
