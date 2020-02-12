@@ -31,6 +31,6 @@ public class Product {
     private Integer inventory;
 
     @Column(nullable = false)
-    private BigDecimal price;
+    private Double price;
 
 }
