@@ -1,6 +1,10 @@
 drop database if exists braylon;
 create database braylon;
 use braylon;
+<<<<<<< HEAD:SQL/BraylenSchema.sql
+=======
+
+>>>>>>> 08e994134886a44961262c7e1b29c563ab8ca700:SQL/BraylonSchema.sql
 create table SalesRep(
 	salesRepId int primary key auto_increment,
 	salesRepFirstName varchar(50) not null,
@@ -10,7 +14,11 @@ create table SalesRep(
     companyName varchar(50) not null,
     email varchar(50) not null
 );
+<<<<<<< HEAD:SQL/BraylenSchema.sql
 insert into SalesRep values (1, 'Chon', 'Xiong', '123 Main St','123-123-1234','Genesis10','chon@chon.com'),(2, 'Tom', 'Carlson', '10 Tom Lane','234-123-4567','Genesis10','Tom@tom.com');
+=======
+
+>>>>>>> 08e994134886a44961262c7e1b29c563ab8ca700:SQL/BraylonSchema.sql
 create table Customer (
 	customerId int primary key auto_increment,
     customerFirstName varchar(50) not null,
@@ -44,7 +52,10 @@ create table `Order` (
     foreign key (userId) references User(userId),
     foreign key (customerId) references Customer(customerId)
 );
+<<<<<<< HEAD:SQL/BraylenSchema.sql
 insert into `Order` values (1,1,'2020-02-12','2020-03-12','pending','20123.12','1'),(2,2,'2020-02-12','2020-03-12','pending','1234.12','2'),(3,1,'2020-02-12','2020-03-12','pending','5342.12','2'),(4,2,'2020-02-12','2020-03-12','pending','2123.12','3');
+=======
+>>>>>>> 08e994134886a44961262c7e1b29c563ab8ca700:SQL/BraylonSchema.sql
 create table `Role`(
 	roleId int primary key auto_increment,
 	role varchar(50) not null
@@ -58,7 +69,11 @@ create table `userRole`(
 	foreign key (userId) references User(userId),
 	foreign key (roleId) references Role(roleId)
 );
+<<<<<<< HEAD:SQL/BraylenSchema.sql
 insert into userRole values (1,1),(1,2),(2,1);
+=======
+
+>>>>>>> 08e994134886a44961262c7e1b29c563ab8ca700:SQL/BraylonSchema.sql
 create table `Product` (
 	productId int primary key auto_increment,
     productName varchar(50) not null,
@@ -83,7 +98,12 @@ create table SalesVisit (
     foreign key (userId) references User(userId),
     foreign key (customerId) references Customer(customerId)
 );
+<<<<<<< HEAD:SQL/BraylenSchema.sql
 insert into SalesVisit values (1,'2020-02-12',2,1,'Home','ahhh'),(2,'2020-02-14',1,2,'Company','ahhh'),(3,'2020-02-16',2,3,'Home','ahhh'),(4,'2020-02-17',1,2,'Home','ahhh'),(5,'2020-02-18',2,1,'AHOIASFH','ahhh');
+=======
+
+
+>>>>>>> 08e994134886a44961262c7e1b29c563ab8ca700:SQL/BraylonSchema.sql
 -- select * from Customer;
 -- select * from User;
 -- Select * from User u where username like "Beth";
