@@ -28,7 +28,7 @@
     <title>Home</title>
     <div class="row m-4">
         <div class=" col text-left m-6" id="titleLink">
-            <h2><a href="/" class="btn-danger btn-lg">Home</a></h2>
+            <h2><a th:href="/home" href="./landingPage.html" class="btn-danger btn-lg">Home</a></h2>
         </div>
         <div class=" col text-right" sec:authorize="isAnonymous()">
             <a href="/login" class="btn-success btn-lg se">Login</a>
@@ -51,8 +51,8 @@
             </div>
             <div class="m-1 p-0 px-1 col" sec:authorize="isAuthenticated()">
                 <hr>&nbsp;
-                <div class="parent"><a href="profile" class="btn-warning btn"
-                        th:href="${'/profile/'+#authentication.name}">Profile</a></div>
+                <div class="parent"><a href="./salesRepDetail.html" class="btn-warning btn"
+                        th:href="${'/salesRep/'+#authentication.name}">Profile</a></div>
                 <hr>&nbsp;
             </div>
         </div>
