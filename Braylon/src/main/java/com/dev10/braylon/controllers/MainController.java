@@ -10,6 +10,7 @@ import com.dev10.braylon.service.orderService;
 import com.dev10.braylon.service.productService;
 import com.dev10.braylon.service.salesVisitService;
 import com.dev10.braylon.service.userService;
+import java.security.Principal;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -76,5 +77,11 @@ public abstract class MainController {
     public String viewAddOrder(Model model, Order order) {
         
         return "addOrder";
+    }
+    
+    @PostMapping("/addOrder")
+    public String processAddOrder(Principal principal, Model model, Order order) {
+        
+        return "redirect:/home";
     }
 }
