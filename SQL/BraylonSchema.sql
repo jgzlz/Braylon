@@ -4,14 +4,14 @@ create database braylon;
 
 use braylon;
 
-create table SalesRep(
-	salesRepId int primary key auto_increment,
-	salesRepFirstName varchar(50) not null,
-	salesRepLastName varchar(50) not null,
-    address varchar(50) not null,
-    phone varchar(50) not null,
-    companyName varchar(50) not null,
-    email varchar(50) not null
+create table `User` (
+	userId int primary key auto_increment,
+    username varchar(50) not null,
+    email varchar(50) not null,
+    password varchar(1000) not null,
+    enabled boolean not null,
+    firstName varchar(50) not null,
+    lastName varchar(50) not null
 );
 
 create table Customer (
@@ -22,18 +22,8 @@ create table Customer (
     phone varchar(50) not null,
     companyName varchar(50) not null,
     email varchar(50) not null,
-    salesRepId int not null,
-    foreign key (salesRepId) references SalesRep(salesRepId)
-);
-
-create table `User` (
-	userId int primary key auto_increment,
-    username varchar(50) not null,
-    email varchar(50) not null,
-    password varchar(1000) not null,
-    enabled boolean not null,
-    firstName varchar(50) not null,
-    lastName varchar(50) not null
+    userId int not null,
+    foreign key (userId) references `User`(userId)
 );
 
 create table `Order` (
