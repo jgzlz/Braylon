@@ -43,4 +43,14 @@ public class userService {
         
         return myUsers;
     }
+
+    public void addUser(User user) {
+        //Validations
+        dao.save(user);
+    }
+
+    public void editUser(User user) {
+        //Validations
+        dao.save(user);
+    }
 }

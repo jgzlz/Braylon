@@ -66,13 +66,14 @@ public abstract class MainController {
         return "customers";
     }
     
+    //Adding Customer
     @GetMapping("/addCustomer")
     public String loadAddingCustomer(Model model) {
         if(userIsAdmin()) {
             model.addAttribute("salesReps", uServ.findAllSalesReps());
         }
         model.addAttribute("customer", null);
-        return "addCustomer";
+        return "customerDetails";
     }
     
     @PostMapping("/addCustomer")
@@ -81,6 +82,7 @@ public abstract class MainController {
         return "redirect:/home";
     }
     
+    //Editing Customer
     @GetMapping("/editCustomer/{customerId}")
     public String loadEditCustomer(Model model, @PathVariable int customerId) {
         Customer customer = cServ.findCustomerById(customerId);
@@ -88,12 +90,38 @@ public abstract class MainController {
             model.addAttribute("salesReps", uServ.findAllSalesReps());
         }
         model.addAttribute("customer", customer);
-        return "addCustomer";
+        return "customerDetails";
     }
     
     @PostMapping("/editCustomer/{customerId}")
     public String editCustomer(@PathVariable int customerId, Customer customer) {
         cServ.editCustomer(customer);
+        return "redirect:/home";
+    }
+    
+    //Adding SalesRep
+    @GetMapping("/addSalesRep")
+    public String loadAddingSalesRep() {
+        return "salesRepDetails";
+    }
+    
+    @PostMapping("/addSalesRep")
+    public String addNewSalesRep(User user) {
+        uServ.addUser(user);
+        return "redirect:/home";
+    }
+    
+    //Editing SalesRep
+    @GetMapping("/editSalesRep/{username}")
+    public String loadEditSalesRep(Model model, @PathVariable String username) {
+        User user = uServ.findUserByUsername(username);
+        model.addAttribute("salesRep", user);
+        return "salesRepDetails";
+    }
+    
+    @PostMapping("/editCustomer/{username}")
+    public String editSalesRep(@PathVariable String username, User user) {
+        uServ.editUser(user);
         return "redirect:/home";
     }
     
