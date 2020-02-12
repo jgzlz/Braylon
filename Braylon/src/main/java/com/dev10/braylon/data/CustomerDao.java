@@ -5,10 +5,18 @@
  */
 package com.dev10.braylon.data;
 
+import java.util.List;
+
 /**
  *
- * @author jeromepullenjr
+ * @author G10-DEV10W3
  */
-public class CustomerDao {
-
+public interface CustomerDao extends JpaRepository<Order, Integer> {
+    
+    @Query(value = "SELECT * from Customer c where SalesRepId like ?1", nativeQuery = true)
+    public List<Order> findAllBySalesRep(String salerep);
+    
+    @Query(value = "SELECT * from Customer c where SalesRepId is null")
+    public List<Order> findAllBySalesRepWithNulls(String status, String username);
+    
 }
