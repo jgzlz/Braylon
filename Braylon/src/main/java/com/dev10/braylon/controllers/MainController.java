@@ -1,6 +1,7 @@
 package com.dev10.braylon.controllers;
 
 
+import com.dev10.braylon.models.Order;
 import com.dev10.braylon.models.Customer;
 import com.dev10.braylon.models.Role;
 import com.dev10.braylon.models.SalesVisit;
@@ -10,6 +11,7 @@ import com.dev10.braylon.service.orderService;
 import com.dev10.braylon.service.productService;
 import com.dev10.braylon.service.salesVisitService;
 import com.dev10.braylon.service.userService;
+import java.security.Principal;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -80,7 +82,7 @@ public abstract class MainController {
     
     @GetMapping("/editCustomer/{customerId}")
     public String loadEditCustomer(Model model, @PathVariable int customerId) {
-        Customer customer = 
+        Customer customer = cServ.findCustomerById(customerId);
         if(userIsAdmin()) {
             model.addAttribute("salesReps", uServ.findAllSalesReps());
         }
@@ -89,6 +91,32 @@ public abstract class MainController {
     }
     
     @PostMapping("/editCustomer")
+    
+    //Adding SalesVisit
+    @GetMapping("/addSalesVisit")
+    public String viewAddSalesVisit(Model model, SalesVisit visit) {
+        
+        return "addSalesVisit";
+    }
+    
+    @PostMapping("/addSalesVisit")
+    public String processAddSalesVisit(Model model, SalesVisit visit) {
+        
+        return "redirect:/home";
+    }
+    
+    //Adding Order
+    @GetMapping("/addOrder")
+    public String viewAddOrder(Model model, Order order) {
+        
+        return "addOrder";
+    }
+    
+    @PostMapping("/addOrder")
+    public String processAddOrder(Principal principal, Model model, Order order) {
+        
+        return "redirect:/home";
+    }
     
     
     private boolean userIsAdmin() {
