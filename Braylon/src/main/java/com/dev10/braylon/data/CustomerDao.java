@@ -19,7 +19,7 @@ public interface CustomerDao extends JpaRepository<Order, Integer> {
     @Query(value = "SELECT * from Customer c where SalesRepId like ?1", nativeQuery = true)
     public List<Order> findAllBySalesRep(String salerep);
     
-    @Query(value = "SELECT * from Customer c where SalesRepId is null")
-    public List<Order> findAllBySalesRepWithNulls(String status, String username);
+//    @Query(value = "SELECT * from Customer c where SalesRepId is null")
+//    public List<Order> findAllBySalesRepWithNulls(String status, String username);
     
 }
