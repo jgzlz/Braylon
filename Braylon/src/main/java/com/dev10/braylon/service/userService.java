@@ -1,25 +1,42 @@
 package com.dev10.braylon.service;
 
+import com.dev10.braylon.data.SalesVisitDao;
+import com.dev10.braylon.data.UserDao;
+import com.dev10.braylon.models.SalesVisit;
 import com.dev10.braylon.models.User;
-import java.util.ArrayList;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class userService {
 
-    private List<User> users = new ArrayList<>();
+    @Autowired
+    UserDao dao;
     
-    public userService() {
-        
-        
-        
-    }
+    @Autowired
+    SalesVisitDao salesVisitDao;
+    
     
     public User findUserByUsername(String username) {
-        return new User();
+        
+        User user = dao.findUserByUsername(username);
+        
+        return user;
     }
     
+    public List<User> findAllUsers() {
+        
+        List<User> myUsers = dao.findAll();
+        
+        return myUsers;
+    }
     
+    public List<SalesVisit> findAllSalesVisitsByUsername(String username) {
+        List<SalesVisit> salesVisits = salesVisitDao.findSalesByUSername(username);
+        
+        return salesVisits;
+    }
+       
     
 }
