@@ -10,18 +10,22 @@ import org.springframework.stereotype.Service;
 public class customerService {
    
     @Autowired
-    CustomerDao customerDao;
+    CustomerDao cDao;
     
     public List<Customer> findAllCustomers() {
         
-        List<Customer> all = customerDao.findAll();
+        List<Customer> all = cDao.findAll();
         return all;
     }
     
     public List<Customer> findAllCustomersByUsername(String username) {
-        List<Customer> all = customerDao.findAllCustomersByUserUsername(username);
+        List<Customer> all = cDao.findAllCustomersByUserUsername(username);
         
         return all;
+    }
+    
+        public Customer findCustomerById(int customerId) {
+        return cDao.findById(customerId).orElse(null);
     }
     
     
