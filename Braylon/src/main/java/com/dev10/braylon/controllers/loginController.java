@@ -10,6 +10,7 @@ public class loginController extends MainController{
     
     @GetMapping("/login")
     public String viewLoginPage(Principal principal) {
+
         return "login";
     }
     

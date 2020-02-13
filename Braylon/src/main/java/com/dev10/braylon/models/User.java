@@ -49,15 +49,14 @@ public class User {
     private String username;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "userRole",
+    @JoinTable(name = "user_role",
     joinColumns = {
-    @JoinColumn(name = "userId")},
+    @JoinColumn(name = "user_id")},
     inverseJoinColumns = {
-    @JoinColumn(name = "roleId")})
+    @JoinColumn(name = "role_id")})
     private List<Role> roles;
 
-    @OneToMany
-    @JoinColumn(name = "userId")
+    @OneToMany(mappedBy="user")
     private List<Order> orders;
 
     public Integer getUserId() {

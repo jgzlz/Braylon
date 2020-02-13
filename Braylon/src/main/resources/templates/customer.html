@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <div th:replace="~{shared :: head(title='customers')}">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Braylon Enterprises</title>
+    </div>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" th:href= "#" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" th:href="/css/customerList.css" href="../static/css/customerList.css">
+</head>
+
+<body>
+    <div th:replace="~{shared :: nav}"></div>
+
+    <div class="container">
+        <h1>
+            All Customers
+        </h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Customer Name</th>
+                    <th scope="col">Sales Representative</th>
+                    <th scope="col">Admin</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="customer : ${customers}">
+                    <td th:text="${customer.name}">Mark Otto</td>
+                    <td class="salesRepLink"><a th:text="${customer.salesRep.name}" href="#"
+                            th:href="${'/salesRep/' + customer.salesRep.salesRepID}">Blobbly Blandlerslon</a></td>
+                    <td class="customerLink"><a class="btn btn-warning text-danger" href="#"
+                            th:href="${'/customer/' + customer.customerID}">View/Edit</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div th:replace="~{shared :: jsPlugins}"></div>
+</body>
+
+</html>

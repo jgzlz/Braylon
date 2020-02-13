@@ -20,15 +20,15 @@ import org.springframework.stereotype.Repository;
 public interface SalesVisitDao extends JpaRepository<SalesVisit, Integer> {
 
     @Query(
-            value = "SELECT * FROM Sales_Visit WHERE visit_Date >= ?1",
+            value = "SELECT * FROM sales_visit WHERE visit_date >= ?1",
             nativeQuery = true)
     public List<SalesVisit> findSalesVisitsAfter(LocalDate cutoffDate);
 
-    @Query(value = "SELECT s.* FROM Sales_visit s JOIN user u ON s.user_Id = u.user_Id WHERE u.username = ?1 AND s.visit_Date >= ?2",
+    @Query(value = "SELECT s.* FROM sales_visit s JOIN user u ON s.user_id = u.user_id WHERE u.username = ?1 AND s.visit_date >= ?2",
             nativeQuery = true)
     public List<SalesVisit> findSalesVisitsByUserAfter(String username, LocalDate cutoffDate);
 
-    @Query(value = "SELECT s.* FROM Sales_visit s JOIN user u ON s.user_Id = u.user_Id WHERE u.username = ?1",
+    @Query(value = "SELECT s.* FROM sales_visit s JOIN user u ON s.user_id = u.user_id WHERE u.username = ?1",
             nativeQuery = true)
     public List<SalesVisit> findSalesByUsername(String username);
 }

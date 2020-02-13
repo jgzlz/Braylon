@@ -48,7 +48,7 @@ public class Customer implements Serializable {
     private String email;
     
     @ManyToOne
-    @JoinColumn(name = "userId")
+    @JoinColumn(name = "user_id", nullable = true)
     private User user;
 
     public Integer getCustomerId() {
@@ -107,16 +107,25 @@ public class Customer implements Serializable {
         this.address = address;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 79 * hash + Objects.hashCode(this.customerId);
-        hash = 79 * hash + Objects.hashCode(this.customerFirstName);
-        hash = 79 * hash + Objects.hashCode(this.customerLastName);
-        hash = 79 * hash + Objects.hashCode(this.companyName);
-        hash = 79 * hash + Objects.hashCode(this.phone);
-        hash = 79 * hash + Objects.hashCode(this.address);
-        hash = 79 * hash + Objects.hashCode(this.email);
+        int hash = 5;
+        hash = 83 * hash + Objects.hashCode(this.customerId);
+        hash = 83 * hash + Objects.hashCode(this.customerFirstName);
+        hash = 83 * hash + Objects.hashCode(this.customerLastName);
+        hash = 83 * hash + Objects.hashCode(this.companyName);
+        hash = 83 * hash + Objects.hashCode(this.phone);
+        hash = 83 * hash + Objects.hashCode(this.address);
+        hash = 83 * hash + Objects.hashCode(this.email);
+        hash = 83 * hash + Objects.hashCode(this.user);
         return hash;
     }
 
@@ -153,6 +162,12 @@ public class Customer implements Serializable {
         if (!Objects.equals(this.customerId, other.customerId)) {
             return false;
         }
+        if (!Objects.equals(this.user, other.user)) {
+            return false;
+        }
         return true;
     }
+    
+
+   
 }
