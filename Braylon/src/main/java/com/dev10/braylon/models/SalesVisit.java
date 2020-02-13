@@ -3,6 +3,7 @@ package com.dev10.braylon.models;
 
 
 import java.time.LocalDate;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,11 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
  *
@@ -31,11 +27,11 @@ public class SalesVisit {
     private LocalDate visitDate;
 
     @ManyToOne
-    @JoinColumn(name = "customerId")
+    @JoinColumn(name = "customer_id")
     private Customer customer;
 
     @ManyToOne
-    @JoinColumn(name = "userId")
+    @JoinColumn(name = "user_id")
     private User user;
 
     @Column(nullable = false)
@@ -47,6 +43,7 @@ public class SalesVisit {
 //    @ManyToOne
 //    @JoinColumn(name = "orderId")
 //    private Order order;
+
     public Integer getSalesVisitId() {
         return salesVisitId;
     }
@@ -94,5 +91,53 @@ public class SalesVisit {
     public void setNotes(String notes) {
         this.notes = notes;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 71 * hash + Objects.hashCode(this.salesVisitId);
+        hash = 71 * hash + Objects.hashCode(this.visitDate);
+        hash = 71 * hash + Objects.hashCode(this.customer);
+        hash = 71 * hash + Objects.hashCode(this.user);
+        hash = 71 * hash + Objects.hashCode(this.location);
+        hash = 71 * hash + Objects.hashCode(this.notes);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final SalesVisit other = (SalesVisit) obj;
+        if (!Objects.equals(this.location, other.location)) {
+            return false;
+        }
+        if (!Objects.equals(this.notes, other.notes)) {
+            return false;
+        }
+        if (!Objects.equals(this.salesVisitId, other.salesVisitId)) {
+            return false;
+        }
+        if (!Objects.equals(this.visitDate, other.visitDate)) {
+            return false;
+        }
+        if (!Objects.equals(this.customer, other.customer)) {
+            return false;
+        }
+        if (!Objects.equals(this.user, other.user)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
+    
 }
 
