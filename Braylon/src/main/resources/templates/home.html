@@ -39,10 +39,10 @@
                 </thead>
                 <tbody>
                     <tr th:each="order : ${orders}">
-                        <td th:text="${order.orderId}">text</td>
-                        <td th:text="${customer.customerId}">text</td>
-                        <td th:text="${customer.customerName}">text</td>
-                        <td th:text="${order.orderDate}">text</td>
+                        <td th:text="${order.billId}">text</td>
+                        <td th:text="${order.customer.customerId}">text</td>
+                        <td th:text="${order.customer.companyName}">text</td>
+                        <td th:text="${order.billDate}">text</td>
                         <td th:text="${order.fulfillmentDate}">text</td>
                         <td th:text="${order.status}">text</td>
                         <td th:text="${order.price}">text</td>
@@ -70,11 +70,10 @@
                     <tr th:each="salesVisit : ${salesVisits}">
                         <td th:text="${salesVisit.salesVisitId}">text</td>
                         <td th:text="${salesVisit.visitDate}">text</td>
-                        <td th:text="${customer.customerName}">text</td>
-                        <td th:text="${user.userId}">text</td>
+                        <td th:text="${salesVisit.customer.companyName}">text</td>
+                        <td th:text="${salesVisit.user.userId}">text</td>
                         <td th:text="${salesVisit.location}">text</td>
                         <td th:text="${salesVisit.notes}">text</td>
-                        <td th:text="${salesVisit.notesTitle}">text</td>
                         <td>
                             <a class="btn btn-danger" th:href="${'/deleteNotes/'+#authentication.name}"
                                 sec:authorize="isAuthenticated()">Delete</a>
