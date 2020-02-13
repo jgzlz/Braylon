@@ -106,8 +106,10 @@ public abstract class MainController {
     
     //Adding SalesRep
     @GetMapping("/addSalesRep")
-    public String loadAddingSalesRep() {
-        //add header to differenciate
+    public String loadAddingSalesRep(Model model) {
+        User user = new User();
+        model.addAttribute("salesRep", user);
+        model.addAttribute("header", "Add");
         return "salesRepDetail";
     }
     
@@ -123,6 +125,7 @@ public abstract class MainController {
     public String loadEditSalesRep(Model model, @PathVariable String username) {
         User user = uServ.findUserByUsername(username);
         model.addAttribute("salesRep", user);
+        model.addAttribute("header", "Edit");
         return "salesRepDetail";
     }
     
