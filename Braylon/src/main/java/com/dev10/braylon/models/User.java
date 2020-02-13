@@ -7,7 +7,7 @@ package com.dev10.braylon.models;
 
 import java.util.List;
 import java.util.Objects;
-import javax.management.relation.Role;
+import com.dev10.braylon.models.Role;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -49,15 +49,14 @@ public class User {
     private String username;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "userRole",
+    @JoinTable(name = "user_role",
     joinColumns = {
-    @JoinColumn(name = "userId")},
+    @JoinColumn(name = "user_id")},
     inverseJoinColumns = {
-    @JoinColumn(name = "roleId")})
+    @JoinColumn(name = "role_id")})
     private List<Role> roles;
 
-    @OneToMany
-    @JoinColumn(name = "userId")
+    @OneToMany(mappedBy="user")
     private List<Order> orders;
 
     public Integer getUserId() {
@@ -134,16 +133,16 @@ public class User {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 41 * hash + Objects.hashCode(this.userId);
-        hash = 41 * hash + Objects.hashCode(this.email);
-        hash = 41 * hash + Objects.hashCode(this.password);
-        hash = 41 * hash + (this.enabled ? 1 : 0);
-        hash = 41 * hash + Objects.hashCode(this.firstName);
-        hash = 41 * hash + Objects.hashCode(this.lastName);
-        hash = 41 * hash + Objects.hashCode(this.username);
-        hash = 41 * hash + Objects.hashCode(this.roles);
-        hash = 41 * hash + Objects.hashCode(this.orders);
+        int hash = 7;
+        hash = 29 * hash + Objects.hashCode(this.userId);
+        hash = 29 * hash + Objects.hashCode(this.email);
+        hash = 29 * hash + Objects.hashCode(this.password);
+        hash = 29 * hash + (this.enabled ? 1 : 0);
+        hash = 29 * hash + Objects.hashCode(this.firstName);
+        hash = 29 * hash + Objects.hashCode(this.lastName);
+        hash = 29 * hash + Objects.hashCode(this.username);
+        hash = 29 * hash + Objects.hashCode(this.roles);
+        hash = 29 * hash + Objects.hashCode(this.orders);
         return hash;
     }
 
@@ -188,6 +187,7 @@ public class User {
         }
         return true;
     }
+
 
 }
 
