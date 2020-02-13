@@ -12,8 +12,6 @@ public class loginController extends MainController{
     public String viewLoginPage(Principal principal) {
         
         
-        currentUser = new User();
-        
         return "login";
     }
     

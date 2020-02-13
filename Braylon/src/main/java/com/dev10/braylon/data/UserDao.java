@@ -24,15 +24,15 @@ public interface UserDao extends JpaRepository<User, Integer> {
     @Query(value = "Select u from User u where username like ?1", nativeQuery = true)
     public User findUserUsername(String username);
 
-    @Query(value = "SELECT COUNT(u.*) FROM user u JOIN userrole ur ON u.userId = ur.userId JOIN role r ON ur.roleId = r.roleId WHERE r.role LIKE 'salesrep'",
+    @Query(value = "SELECT COUNT(u.*) FROM user u JOIN user_role ur ON u.user_id = ur.user_id JOIN role r ON ur.role_id = r.role_id WHERE r.role LIKE 'salesrep'",
             nativeQuery = true)
     public Integer findSalesRepCount();
 
-    @Query(value = "SELECT u.* FROM user u JOIN userrole ur ON u.userId = ur.userId JOIN role r ON ur.roleId = r.roleId WHERE r.role LIKE 'salesrep'",
+    @Query(value = "SELECT u.* FROM user u JOIN user_role ur ON u.user_id = ur.user_id JOIN role r ON ur.role_id = r.role_id WHERE r.role LIKE 'salesrep'",
             nativeQuery = true)
     public List<User> findAllSalesReps();
 
-    @Query(value = "SELECT r.role FROM user u JOIN userrole ur ON u.userId = ur.userId JOIN role r ON ur.roleId = r.roleId WHERE u.username LIKE ?1",
+    @Query(value = "SELECT r.role FROM user u JOIN user_role ur ON u.user_id = ur.user_id JOIN role r ON ur.role_id = r.role_id WHERE u.username LIKE ?1",
             nativeQuery = true)
     public String findRoleByUsername(String username);
 

@@ -1,111 +1,94 @@
 drop database if exists braylon;
 create database braylon;
 use braylon;
-<<<<<<< HEAD:SQL/BraylenSchema.sql
-=======
 
->>>>>>> 08e994134886a44961262c7e1b29c563ab8ca700:SQL/BraylonSchema.sql
-create table SalesRep(
-	salesRepId int primary key auto_increment,
-	salesRepFirstName varchar(50) not null,
-	salesRepLastName varchar(50) not null,
-    address varchar(50) not null,
-    phone varchar(50) not null,
-    companyName varchar(50) not null,
-    email varchar(50) not null
-);
-<<<<<<< HEAD:SQL/BraylenSchema.sql
-insert into SalesRep values (1, 'Chon', 'Xiong', '123 Main St','123-123-1234','Genesis10','chon@chon.com'),(2, 'Tom', 'Carlson', '10 Tom Lane','234-123-4567','Genesis10','Tom@tom.com');
-=======
-
->>>>>>> 08e994134886a44961262c7e1b29c563ab8ca700:SQL/BraylonSchema.sql
-create table Customer (
-	customerId int primary key auto_increment,
-    customerFirstName varchar(50) not null,
-    customerLastName varchar(50) not null,
-    address varchar(50) not null,
-    phone varchar(50) not null,
-    companyName varchar(50) not null,
-    email varchar(50) not null,
-    salesRepId int not null,
-    foreign key (salesRepId) references SalesRep(salesRepId)
-);
-insert into Customer values (1, 'Beth', 'Raymond', '123 Main St','123-123-1234','Genesis10','beth@beth.com', 1),(2, 'Joe', 'Gonzalez', '10 Joe Lane','234-123-1245','Joe Gonzalez','Joe@joe.joe', 2);
 create table `User` (
-	userId int primary key auto_increment,
+	user_id int primary key auto_increment,
     username varchar(50) not null,
     email varchar(50) not null,
-    password varchar(1000) not null,
+    `password` varchar(1000) not null,
     enabled boolean not null,
-    firstName varchar(50) not null,
-    lastName varchar(50) not null
+    first_name varchar(50) not null,
+    last_name varchar(50) not null
 );
-insert into User values (1,'Mayzer','mayzer@mayzer.com','$2a$10$IuKgHhWowwrQt9i5IgxB6uU.3Mr5l32DiRCbddTfP1vptAnW5BwWe',1,'Mayzer','Muhammed'),(2,'Jake','jake@jake.com','$2a$10$IuKgHhWowwrQt9i5IgxB6uU.3Mr5l32DiRCbddTfP1vptAnW5BwWe',1,'Jake','White'),(3,'Marcus','marcus@marcus.com','$2a$10$IuKgHhWowwrQt9i5IgxB6uU.3Mr5l32DiRCbddTfP1vptAnW5BwWe',1,'Marcus','Elliott');
+insert into User values (1,'Mayzer','mayzer@mayzer.com','$2a$10$WRYCREJfr26bvGSD4RF37OISaCiyTTmwjeYpklJmEiAU/KAdfFK4u',1,'Mayzer','Muhammed'),(2,'Jake','jake@jake.com','$2a$10$WRYCREJfr26bvGSD4RF37OISaCiyTTmwjeYpklJmEiAU/KAdfFK4u',1,'Jake','White'),
+							(3,'Marcus','marcus@marcus.com','$2a$10$WRYCREJfr26bvGSD4RF37OISaCiyTTmwjeYpklJmEiAU/KAdfFK4u',1,'Marcus','Elliot');
+
+
+create table Customer (
+	customer_id int primary key auto_increment,
+    customer_first_name varchar(50) not null,
+    customer_last_name varchar(50) not null,
+    address varchar(50) not null,
+    phone varchar(50) not null,
+    company_name varchar(50) not null,
+    email varchar(50) not null,
+    user_id int null,
+    foreign key (user_id) references `User`(user_id)
+);
+
+insert into Customer values (1, 'Beth', 'Raymond', '123 Main St','123-123-1234','Genesis10','beth@beth.com', 1),(2, 'Joe', 'Gonzalez', '10 Joe Lane','234-123-1245','Joe Gonzalez','Joe@joe.joe', 2);
 create table `Order` (
-	orderId int primary key auto_increment,
-    customerId int not null,
-    orderDate date not null,
-    fulfillmentDate date,
+	order_id int primary key auto_increment,
+    customer_id int not null,
+    order_date date not null,
+    fulfillment_date date,
     status varchar(50) not null,
     price decimal not null,
-    userId int not null,
-    foreign key (userId) references User(userId),
-    foreign key (customerId) references Customer(customerId)
+    user_id int not null,
+    foreign key (user_id) references `User`(user_id),
+    foreign key (customer_id) references Customer(customer_id)
 );
-<<<<<<< HEAD:SQL/BraylenSchema.sql
+
 insert into `Order` values (1,1,'2020-02-12','2020-03-12','pending','20123.12','1'),(2,2,'2020-02-12','2020-03-12','pending','1234.12','2'),(3,1,'2020-02-12','2020-03-12','pending','5342.12','2'),(4,2,'2020-02-12','2020-03-12','pending','2123.12','3');
-=======
->>>>>>> 08e994134886a44961262c7e1b29c563ab8ca700:SQL/BraylonSchema.sql
+
 create table `Role`(
-	roleId int primary key auto_increment,
+	role_id int primary key auto_increment,
 	role varchar(50) not null
 );
 insert into `Role` values (1,'ROLE_ADMIN'),(2,'ROLE_USER');
 #bridge table 
-create table `userRole`(
-	userId int not null,
-	roleId int not null,
-	primary key(userId,roleId),
-	foreign key (userId) references User(userId),
-	foreign key (roleId) references Role(roleId)
+create table user_role(
+	user_id int not null,
+	role_id int not null,
+	primary key(user_id,role_id),
+	foreign key (user_id) references User(user_id),
+	foreign key (role_id) references Role(role_id)
 );
-<<<<<<< HEAD:SQL/BraylenSchema.sql
-insert into userRole values (1,1),(1,2),(2,1);
-=======
 
->>>>>>> 08e994134886a44961262c7e1b29c563ab8ca700:SQL/BraylonSchema.sql
+insert into user_role values (1,1),(1,2),(2,1);
+
 create table `Product` (
-	productId int primary key auto_increment,
-    productName varchar(50) not null,
+	product_id int primary key auto_increment,
+    product_name varchar(50) not null,
     inventory int not null,
     price decimal not null
 );
 insert into `Product` values (1,'Screen',23,1234.12),(2,'Camera',53,4534.12),(3,'Light',233,123.12);
-create table orderProduct(
-	orderId int not null,
-    productId int not null,
-    foreign key (orderId) references `Order`(orderId),
-    foreign key (productId) references Product(productId)
+create table order_product(
+	order_id int not null,
+    product_id int not null,
+    foreign key (order_id) references `Order`(order_id),
+    foreign key (product_id) references Product(product_id)
 );
-insert into orderProduct values (1,1),(1,2),(1,3),(2,1),(2,3),(3,1),(4,1),(4,2);
-create table SalesVisit (
-	salesvisitId int primary key auto_increment,
-    visitDate date not null,
-    customerId int not null,
-    userId int not null,
+insert into order_product values (1,1),(1,2),(1,3),(2,1),(2,3),(3,1),(4,1),(4,2);
+create table sales_visit (
+	sales_visit_id int primary key auto_increment,
+    visit_date date not null,
+    customer_id int not null,
+    user_id int not null,
     location varchar(50) not null,
     notes varchar(450) not null,
-    foreign key (userId) references User(userId),
-    foreign key (customerId) references Customer(customerId)
+    foreign key (user_id) references User(user_id),
+    foreign key (customer_id) references Customer(customer_id)
 );
-<<<<<<< HEAD:SQL/BraylenSchema.sql
-insert into SalesVisit values (1,'2020-02-12',2,1,'Home','ahhh'),(2,'2020-02-14',1,2,'Company','ahhh'),(3,'2020-02-16',2,3,'Home','ahhh'),(4,'2020-02-17',1,2,'Home','ahhh'),(5,'2020-02-18',2,1,'AHOIASFH','ahhh');
-=======
 
+insert into sales_visit values (1,'2020-02-12',2,1,'Home','ahhh'),(2,'2020-02-14',1,2,'Company','ahhh'),(3,'2020-02-16',2,3,'Home','ahhh'),(4,'2020-02-17',1,2,'Home','ahhh'),(5,'2020-02-18',2,1,'AHOIASFH','ahhh');
 
->>>>>>> 08e994134886a44961262c7e1b29c563ab8ca700:SQL/BraylonSchema.sql
 -- select * from Customer;
 -- select * from User;
 -- Select * from User u where username like "Beth";
 -- select * from SalesVisit;
 -- SELECT c.*, s.userId FROM User u JOIN SalesVisit s ON s.customerId = u.userId JOIN Customer c ON s.customerID = c.customerID WHERE u.userId = 1;
+SELECT * FROM user_role;
+

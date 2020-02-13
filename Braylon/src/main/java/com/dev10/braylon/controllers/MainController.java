@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public abstract class MainController {
     
-    protected User currentUser;
+    public static User currentUser;
     
     @Autowired
     private customerService cServ;

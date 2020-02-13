@@ -30,9 +30,13 @@ public class Order {
     private Integer orderId;
 
     @ManyToOne
-    @JoinColumn(name = "customerId")
+    @JoinColumn(name = "customer_id")
     private Customer customer;
-
+    
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+    
     @Column(nullable = false)
     private LocalDateTime orderDate;
 
@@ -46,9 +50,9 @@ public class Order {
     private Double price;
 
     @ManyToMany
-    @JoinTable(name = "orderProduct",
-    joinColumns = {@JoinColumn(name = "orderId")},
-    inverseJoinColumns = {@JoinColumn(name = "productId")})
+    @JoinTable(name = "order_product",
+    joinColumns = {@JoinColumn(name = "order_id")},
+    inverseJoinColumns = {@JoinColumn(name = "product_id")})
     private List<Product> products;
 
     public Integer getOrderId() {
