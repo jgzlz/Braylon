@@ -144,7 +144,7 @@ insert into sales_visit values (1,'2020-02-12',2,1,'Home','ahhh'),(2,'2020-02-14
 -- Select * from User u where username like "Beth";
 -- select * from SalesVisit;
 -- SELECT c.*, s.userId FROM User u JOIN SalesVisit s ON s.customerId = u.userId JOIN Customer c ON s.customerID = c.customerID WHERE u.userId = 1;
--- SELECT * FROM user_role;
+SELECT * FROM user_role;
 
 =======
     foreign key (user_id) references `user`(user_id),
