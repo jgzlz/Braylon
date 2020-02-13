@@ -11,3 +11,22 @@ body{
     border: 1px solid grey;
     border-radius: 10px;
 }
+
+tbody > tr:nth-of-type(even),
+.row-striped:nth-of-type(even),
+tbody > tr:nth-of-type(even) a:not(.btn),
+thead > tr {
+    background-color: #7b7680;
+    color: floralwhite;
+}
+
+tbody > tr:nth-of-type(odd),
+.row-striped:nth-of-type(odd),
+tbody > tr:nth-of-type(odd) a:not(.btn) {
+    background-color: #bdbcaa;
+    color: black;
+}
+
+.pageTitle{
+    font-weight: bold;
+}
