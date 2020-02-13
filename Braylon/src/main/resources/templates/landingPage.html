@@ -31,7 +31,9 @@
 <body>
     <div class="row m-4">
         <div class=" col text-left m-6" id="titleLink">
-            <h2><a th:href="/home" href="./landingPage.html" class="btn-danger btn-lg">Home</a></h2>
+            <a th:href="/home" href="./landingPage.html" class="btn-danger btn-lg pageTitle">
+                Home
+            </a>
         </div>
         <div class=" col text-right" sec:authorize="isAnonymous()">
             <a href="/login" class="btn-success btn-lg se">Login</a>

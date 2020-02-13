@@ -17,42 +17,42 @@
     <div th:replace="~{shared :: nav}"></div>
 
     <div class="container">
-        <h1>Add/Edit Order</h1>
+        <h1 class="pageTitle">Add/Edit Bill</h1>
         <form>
-            <input type="hidden" class="form-control" name="orderId" id="orderId" th:value="${order.orderId}">
-            <input type="hidden" class="form-control" name="userId" id="userId" th:value="${order.user.userId}">
+            <input type="hidden" class="form-control" name="billId" id="billId" th:value="${bill.billId}">
+            <input type="hidden" class="form-control" name="userId" id="userId" th:value="${bill.user.userId}">
             <div class="form-group">
                 <label for="userName">Date Requested</label>
-                <input type="date" class="form-control" th:name="orderDate" id="orderDate"
-                    aria-describedby="orderDateHelp" placeholder="02-12-2020" th:value="${order.orderDate}">
+                <input type="date" class="form-control" th:name="billDate" id="billDate"
+                    aria-describedby="billDateHelp" placeholder="02-12-2020" th:value="${bill.billDate}">
             </div>
             <div class="form-group">
                 <label for="userName">Date Fulfilled</label>
                 <input type="date" class="form-control" th:name="fulfillmentDate" id="fulfillmentDate"
-                    aria-describedby="fulfillmentDateHelp" placeholder="02-12-2020" th:value="${order.fulfillmentDate}">
+                    aria-describedby="fulfillmentDateHelp" placeholder="02-12-2020" th:value="${bill.fulfillmentDate}">
             </div>
             <div class="form-group">
                 <label for="status">Status</label>
                 <input type="status" class="form-control" id="status" aria-describedby="statusHelp"
-                    placeholder="Enter status" th:value="${order.status}">
+                    placeholder="Enter status" th:value="${bill.status}">
             </div>
             <div class="form-group">
-                <label for="orderPrice">Price</label>
-                <input type="number" class="form-control" name="price" id="orderPrice" aria-describedby="orderPriceHelp"
-                    placeholder="Enter price" th:value="${order.price}">
+                <label for="billPrice">Price</label>
+                <input type="number" class="form-control" name="price" id="billPrice" aria-describedby="billPriceHelp"
+                    placeholder="Enter price" th:value="${bill.price}">
             </div>
             <div class="form-group col">
                 <!-- customers single select, products multiselect -->
                 <label for="customerSelect">Sales Rep.</label>
                 <select class="form-control" id="customerSelect" name="customer">
-                    <option selected value="100" th:value="0" th:selected="${order.customer == null}">- Select -
+                    <option selected value="100" th:value="0" th:selected="${bill.customer == null}">- Select -
                     </option>
                     <option th:each="customer : ${customers}" th:text="${customer.firstName + ' ' + customer.lastName}"
-                        th:value="${customer.customerID}" th:selected="${customer.equals(order.customer)}">
+                        th:value="${customer.customerID}" th:selected="${customer.equals(bill.customer)}">
                         Sally SalesRep</option>
                 </select>
-                <div th:if="${#fields.hasErrors('order.customer')}">
-                    <p th:each="error : ${#fields.errors('order.customer')}" class="alert alert-danger" th:text="${error}">
+                <div th:if="${#fields.hasErrors('bill.customer')}">
+                    <p th:each="error : ${#fields.errors('bill.customer')}" class="alert alert-danger" th:text="${error}">
                         Bad name </p>
                 </div>
               </div>
