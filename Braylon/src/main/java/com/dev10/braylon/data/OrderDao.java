@@ -19,13 +19,13 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface OrderDao extends JpaRepository<Order, Integer> {
 
-    @Query(value = "SELECT * from `Order` o where `status` like ?1", nativeQuery = true)
+    @Query(value = "SELECT * from `order` o where `status` like ?1", nativeQuery = true)
     public List<Order> findAllByStatus(String status);
 
-    @Query(value = "SELECT * FROM `Order` o JOIN User u on o.user_id = u.user_id WHERE `status` LIKE ?1 AND u.username = ?2", nativeQuery = true)
+    @Query(value = "SELECT * FROM `order` o JOIN user u on o.user_id = u.user_id WHERE `status` LIKE ?1 AND u.username = ?2", nativeQuery = true)
     public List<Order> findAllByStatusAndUserName(String status, String username);
 
-    @Query(value = "SELECT o FROM Order o WHERE status LIKE 'completed' AND fulfillment_date > ?1")
+    @Query(value = "SELECT o FROM order o WHERE status LIKE 'completed' AND fulfillment_date > ?1")
     public List<Order> findAllCompletedDateLimited(LocalDateTime dateCutoff);
 
 }

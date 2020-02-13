@@ -19,8 +19,7 @@
         <h1>Add/Edit Order</h1>
         <form>
             <input type="hidden" class="form-control" name="orderId" id="orderId" th:value="${order.orderId}">
-            <input type="hidden" class="form-control" name="customerId" id="customerId"
-                th:value="${order.customer.customerId}">
+            <input type="hidden" class="form-control" name="userId" id="userId" th:value="${order.user.userId}">
             <div class="form-group">
                 <label for="userName">Date Requested</label>
                 <input type="date" class="form-control" th:name="orderDate" id="orderDate"
@@ -43,19 +42,32 @@
             </div>
             <div class="form-group col">
                 <!-- customers single select, products multiselect -->
-                <label for="userSelect">Sales Rep.</label>
-                <select class="form-control" id="userSelect" name="user">
-                    <option selected value="100" th:value="0" th:selected="${order.user == null}">- Select -
+                <label for="customerSelect">Sales Rep.</label>
+                <select class="form-control" id="customerSelect" name="customer">
+                    <option selected value="100" th:value="0" th:selected="${order.customer == null}">- Select -
                     </option>
-                    <option th:each="user : ${users}" th:text="${user.firstName + ' ' + user.lastName}"
-                        th:value="${user.userID}" th:selected="${user.equals(order.user)}">
+                    <option th:each="customer : ${customers}" th:text="${customer.firstName + ' ' + customer.lastName}"
+                        th:value="${customer.customerID}" th:selected="${customer.equals(order.customer)}">
                         Sally SalesRep</option>
                 </select>
-                <div th:if="${#fields.hasErrors('order.user')}">
-                    <p th:each="error : ${#fields.errors('order.user')}" class="alert alert-danger" th:text="${error}">
+                <div th:if="${#fields.hasErrors('order.customer')}">
+                    <p th:each="error : ${#fields.errors('order.customer')}" class="alert alert-danger" th:text="${error}">
                         Bad name </p>
                 </div>
               </div>
+              <div class="form-group row">
+                <label for="products" class="col-3 col-form-label">Products</label>
+                <div class="col-9">
+                    <select multiple id="products" name="productId" 
+                            class="form-control">
+                        <option th:each="product : ${products}" 
+                                th:value="${product.id}" 
+                                th:text="${product.name}"
+                                th:selected="${order.products.contains(product)}">
+                            Product Name</option>
+                    </select>
+                </div>
+            </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
