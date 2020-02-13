@@ -32,7 +32,7 @@ thead > tr {
     color: white;
 }
 
-tn){
+tbody > tr:nth-of-type(even) a:not(.btn){
     color: floralwhite;
 }
 tbody > tr:nth-of-type(odd) a:not(.btn){
@@ -40,7 +40,7 @@ tbody > tr:nth-of-type(odd) a:not(.btn){
 }
 
 /* fixes buttons on alternating color table rows */
-tbody > tr:nth-of-type(even) a:not(.b
+
 /* adds a box shadow to all site tables */
 table{
     -moz-box-shadow:    3px 3px 5px 6px #ccc;
