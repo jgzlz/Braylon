@@ -47,9 +47,9 @@
                         <td th:text="${order.status}">text</td>
                         <td th:text="${order.price}">text</td>
                         <td>
-                            <a class="btn btn-danger" href="#" th:href="${'/deleteNotes/'+#authentication.name}"
+                            <a class="btn btn-danger" href="#" th:href="${'/deleteOrder/'+#authentication.name}"
                                 sec:authorize="isAuthenticated()">Delete</a>
-                            <a class="btn btn-secondary" href="#" th:href="${'/editNotes/'+#authentication.name}"
+                            <a class="btn btn-secondary" href="#" th:href="${'/editOrder/'+#authentication.name}"
                                 sec:authorize="isAuthenticated()">View/Edit</a>
                         </td>
                     </tr>
@@ -75,9 +75,9 @@
                         <td th:text="${salesVisit.location}">text</td>
                         <td th:text="${salesVisit.notes}">text</td>
                         <td>
-                            <a class="btn btn-danger" th:href="${'/deleteNotes/'+#authentication.name}"
+                            <a class="btn btn-danger" th:href="${'/deleteSalesVisit/'+#authentication.name}"
                                 sec:authorize="isAuthenticated()">Delete</a>
-                            <a class="btn btn-secondary" th:href="${'/editNotes/'+#authentication.name}"
+                            <a class="btn btn-secondary" th:href="${'/editSalesVisit/'+#authentication.name}"
                                 sec:authorize="isAuthenticated()">View/Edit</a>
                         </td>
                     </tr>

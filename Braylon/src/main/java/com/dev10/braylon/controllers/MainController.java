@@ -13,7 +13,6 @@ import com.dev10.braylon.service.productService;
 import com.dev10.braylon.service.salesVisitService;
 import com.dev10.braylon.service.userService;
 import java.security.Principal;
-import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -74,17 +73,18 @@ public abstract class MainController {
     }
     
     //Adding Customer
-    @GetMapping("/addCustomer")
-    public String loadAddingCustomer(Model model) {
+    @GetMapping("/addCustomer/{username}")
+    public String loadAddingCustomer(@PathVariable String username, Model model) {
         if(userIsAdmin()) {
             model.addAttribute("salesReps", uServ.findAllSalesReps());
         }
-        model.addAttribute("customer", null);
+        Customer customer = new Customer();
+        model.addAttribute("customer", customer);
         return "customerDetail";
     }
     
-    @PostMapping("/addCustomer")
-    public String addNewCustomer(Customer customer) {
+    @PostMapping("/addCustomer/{username}")
+    public String addNewCustomer(@PathVariable String username, Customer customer) {
         cServ.addCustomer(customer);
         return "redirect:/home";
     }
