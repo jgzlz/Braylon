@@ -1,10 +1,4 @@
-.customerLink > a,
-.salesRepLink > a{
-    color: grey;
-
-}
-
 .customerLink > a:hover,
 .salesRepLink > a:hover{
-    color: darkgrey;
+    color: blue;
 }
