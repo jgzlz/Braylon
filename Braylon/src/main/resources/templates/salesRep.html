@@ -33,11 +33,14 @@
                     <td th:text="${user.userName}">MarkO1987</td>
                     <td th:text="${user.firstName + ' ' + user.lastName}">Mark Otto</td>
                     <td th:text="${user.email}">Mark@otto.com</td>
-                    <td class="customerLink"><a class="btn btn-warning text-danger" href="./salesRepDetail.html"
-                        th:href="${'/user/' + user.userId}">View/Edit</a></td>
+                    <td sec:authorize="hasRole('ROLE_ADMIN')" class="customerLink"><a
+                            class="btn btn-warning text-danger" href="./salesRepDetail.html"
+                            th:href="${'/salesRep/' + user.userName}">View/Edit</a></td>
                 </tr>
             </tbody>
         </table>
+        <a sec:authorize="hasRole('ROLE_ADMIN')" href="./salesRepDetail.html" th:href="${'/addSalesRep'}"
+            class="btn btn-primary">Add Sales Rep.</a>
     </div>
 
     <div th:replace="~{shared :: jsPlugins}"></div>
