@@ -4,81 +4,81 @@ create database braylon;
 
 use braylon;
 
-create table `User` (
-	userId int primary key auto_increment,
+create table `user` (
+	user_id int primary key auto_increment,
     username varchar(50) not null,
     email varchar(50) not null,
     password varchar(1000) not null,
     enabled boolean not null,
-    firstName varchar(50) not null,
-    lastName varchar(50) not null
+    first_name varchar(50) not null,
+    last_name varchar(50) not null
 );
 
-create table Customer (
-	customerId int primary key auto_increment,
-    customerFirstName varchar(50) not null,
-    customerLastName varchar(50) not null,
+create table customer (
+	customer_id int primary key auto_increment,
+    customer_first_name varchar(50) not null,
+    customer_last_name varchar(50) not null,
     address varchar(50) not null,
     phone varchar(50) not null,
-    companyName varchar(50) not null,
+    company_name varchar(50) not null,
     email varchar(50) not null,
-    userId int not null,
-    foreign key (userId) references `User`(userId)
+    user_id int not null,
+    foreign key (user_id) references `user`(user_id)
 );
 
-create table `Order` (
-	orderId int primary key auto_increment,
-    customerId int not null,
-    orderDate date not null,
-    fulfillmentDate date,
+create table `order` (
+	order_id int primary key auto_increment,
+    customer_id int not null,
+    order_date date not null,
+    fulfillment_date date,
     status varchar(50) not null,
     price decimal not null,
-    userId int not null,
-    foreign key (userId) references User(userId),
-    foreign key (customerId) references Customer(customerId)
+    user_id int not null,
+    foreign key (user_id) references User(user_id),
+    foreign key (customer_id) references Customer(customer_id)
 );
-create table `Role`(
-	roleId int primary key auto_increment,
+create table `role`(
+	role_id int primary key auto_increment,
 	role varchar(50) not null
 );
 
 #bridge table 
-create table `userRole`(
-	userId int not null,
-	roleId int not null,
-	primary key(userId,roleId),
-	foreign key (userId) references User(userId),
-	foreign key (roleId) references Role(roleId)
+create table `user_role`(
+	user_id int not null,
+	role_id int not null,
+	primary key(user_id,role_id),
+	foreign key (user_id) references User(user_id),
+	foreign key (role_id) references Role(role_id)
 );
 
-create table `Product` (
-	productId int primary key auto_increment,
-    productName varchar(50) not null,
+create table `product` (
+	product_id int primary key auto_increment,
+    product_name varchar(50) not null,
     inventory int not null,
     price decimal not null
 );
 
-create table orderProduct(
-	orderId int not null,
-    productId int not null,
-    foreign key (orderId) references `Order`(orderId),
-    foreign key (productId) references Product(productId)
+create table order_product(
+	order_id int not null,
+    product_id int not null,
+    foreign key (order_id) references `order`(order_id),
+    foreign key (product_id) references product(product_id)
 );
 
-create table SalesVisit (
-	salesvisitId int primary key auto_increment,
-    visitDate date not null,
-    customerId int not null,
-    userId int not null,
+create table sales_visit (
+	salesvisit_id int primary key auto_increment,
+    visit_date date not null,
+    customer_id int not null,
+    user_id int not null,
     location varchar(50) not null,
     notes varchar(450) not null,
-    foreign key (userId) references User(userId),
-    foreign key (customerId) references Customer(customerId)
+    foreign key (user_id) references User(user_id),
+    foreign key (customer_id) references Customer(customer_id)
 );
 
 
--- select * from Customer;
--- select * from User;
--- Select * from User u where username like "Beth";
--- select * from SalesVisit;
--- SELECT c.*, s.userId FROM User u JOIN SalesVisit s ON s.customerId = u.userId JOIN Customer c ON s.customerID = c.customerID WHERE u.userId = 1;
+-- select * from customer;
+-- select * from user;
+-- Select * from user u where username like "Beth";
+-- select * from sales_visit;
+-- SELECT c.*, s.user_id FROM user u JOIN sales_visit s ON s.customer_id = u.user_id JOIN customer c ON s.customer_id = c.customer_id WHERE u.user_id = 1;
