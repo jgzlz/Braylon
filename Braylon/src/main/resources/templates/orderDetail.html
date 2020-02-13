@@ -20,7 +20,7 @@
         <h1 class="pageTitle">Add/Edit Bill</h1>
         <form>
             <input type="hidden" class="form-control" name="billId" id="billId" th:value="${bill.billId}">
-            <input type="hidden" class="form-control" name="userId" id="userId" th:value="${bill.user.userId}">
+            <!-- <input type="hidden" class="form-control" name="userId" id="userId" th:value="${bill.user.userId}"> -->
             <div class="form-group">
                 <label for="userName">Date Requested</label>
                 <input type="date" class="form-control" th:name="billDate" id="billDate"
