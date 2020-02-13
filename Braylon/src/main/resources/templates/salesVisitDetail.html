@@ -2,19 +2,18 @@
 <html lang="en">
 
 <head>
-    <div th:replace="~{shared :: head(title='register')}">
+    <div th:replace="~{shared :: head(title='Sales Visit Detail')}">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Braylon Enterprises</title>
+        <title>Braylon Enterprises -- Sales Visit Details</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+            integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     </div>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" th:href="/css/customerList.css" href="../static/css/customerDetail.css">
 </head>
 
 <body>
     <div th:replace="~{shared :: nav}"></div>
-
     <div class="container">
         <h1>Add/Edit Sales Visit</h1>
         <form>
@@ -39,6 +38,7 @@
                 </textarea>
             </div>
             <div class="form-group col">
+                <!-- turn into customer select based on user -->
                 <label for="userSelect">Sales Rep.</label>
                 <select class="form-control" id="userSelect" name="user">
                     <option selected value="100" th:value="0" th:selected="${salesvisit.user == null}">- Select -
