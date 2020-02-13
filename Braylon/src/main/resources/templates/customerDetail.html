@@ -2,13 +2,13 @@
 <html lang="en">
 
 <head>
-  <div th:replace="~{shared :: head(title='register')}">
+  <div th:replace="~{shared :: head(title='customer details')}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Braylon Enterprises</title>
-  </div>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    <title>Braylon Enterprises -- Customer Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  </div>
   <link rel="stylesheet" type="text/css" th:href="/css/customerList.css" href="../static/css/customerDetail.css">
 </head>
 
@@ -18,16 +18,17 @@
   <div class="container">
     <h1>Add/Edit Customer</h1>
     <form>
-      <input type="hidden" class="form-control" name="customerID" id="customerID" aria-describedby="customer id help">
+      <input type="hidden" class="form-control" name="customerId" id="customerId" th:value="${customer.customerId}">
       <div class="form-group">
-        <label for="exampleInputEmail1">First Name</label>
-        <input type="text" class="form-control" name="firstName" id="firstName" aria-describedby="firstNameHelp"
-          placeholder="Enter first name" th:value="${customer.firstName}">
+        <label for="customerFirstName">First Name</label>
+        <input type="text" class="form-control" name="customerFirstName" id="customerFirstName"
+          aria-describedby="customerFirstNameHelp" placeholder="Enter first name"
+          th:value="${customer.customerFirstName}">
       </div>
       <div class="form-group">
-        <label for="lastName">Last Name</label>
-        <input type="text" class="form-control" name="lastName" id="lastName" aria-describedby="lastNameHelp"
-          placeholder="Enter last Name" th:value="${customer.lastName}">
+        <label for="customerLastName">Last Name</label>
+        <input type="text" class="form-control" name="customerLastName" id="customerLastName"
+          aria-describedby="customerLastNameHelp" placeholder="Enter last Name" th:value="${customer.customerLastName}">
       </div>
       <div class="form-group">
         <label for="address">Address</label>
@@ -50,17 +51,18 @@
           placeholder="Enter email" th:value="${customer.email}">
       </div>
       <div class="form-group col">
-        <label for="salesRepSelect">Sales Rep.</label>
-        <select class="form-control" id="salesRepSelect" name="salesRep">
-          <option selected value="100" th:value="0" th:selected="${customer.salesRep == null}">- Select -</option>
-          <option th:each="salesRep : ${salesReps}" th:text="${salesRep.firstName + ' ' + salesRep.lastName}" th:value="${salesRep.salesRepID}"
-            th:selected="${salesRep.equals(customer.salesRep)}">
+        <label for="userSelect">Sales Rep.</label>
+        <select class="form-control" id="userSelect" name="user">
+          <option selected value="100" th:value="0" th:selected="${customer.user == null}">- Select -</option>
+          <option th:each="user : ${users}" th:text="${user.firstName + ' ' + user.lastName}"
+            th:value="${user.userID}" th:selected="${user.equals(customer.user)}">
             Sally SalesRep</option>
         </select>
-        <div th:if="${#fields.hasErrors('customer.salesRep')}">
-            <p th:each="error : ${#fields.errors('customer.salesRep')}" class="alert alert-danger" th:text="${error}">
+        <div th:if="${#fields.hasErrors('customer.user')}">
+            <p th:each="error : ${#fields.errors('customer.user')}" class="alert alert-danger" th:text="${error}">
                 Bad name </p>
         </div>
+      </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
   </div>

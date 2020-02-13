@@ -2,10 +2,10 @@
 <html lang="en">
 
 <head>
-    <div th:replace="~{shared :: head(title='customers')}">
+    <div th:replace="~{shared :: head(title='All Sales Reps')}">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Braylon Enterprises</title>
+        <title>Braylon Enterprises -- All Sales Reps</title>
     </div>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
@@ -22,18 +22,19 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">Customer Name</th>
-                    <th scope="col">Sales Representative</th>
-                    <th scope="col">C.I.D.</th>
+                    <th scope="col">User name</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Enabled</th>
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="customer : ${customers}">
-                    <td th:text="${customer.name}">Mark Otto</td>
-                    <td class="salesRepLink"><a th:text="${customer.salesRep.name}" href="#"
-                            th:href="${'/salesRep/' + customer.salesRep.salesRepID}">Blobbly Blandlerslon</a></td>
-                    <td class="customerLink"><a th:text="${customer.customerID}" href="#"
-                            th:href="${'/customer/' + customer.customerID}">143</a></td>
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.userName}">MarkO1987</td>
+                    <td th:text="${user.firstName + ' ' + user.lastName}">Mark Otto</td>
+                    <td th:text="${user.email}">Mark@otto.com</td>
+                    <td class="customerLink"><a class="btn btn-warning text-danger" href="./salesRepDetail.html"
+                        th:href="${'/user/' + user.userId}">View/Edit</a></td>
                 </tr>
             </tbody>
         </table>

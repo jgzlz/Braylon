@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <div th:replace="~{shared :: head(title='Order Detail')}">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Braylon Enterprises -- Order Detail</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+            integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    </div>
+    <link rel="stylesheet" type="text/css" th:href="/css/customerList.css" href="../static/css/customerDetail.css">
+</head>
+
+<body>
+    <div th:replace="~{shared :: nav}"></div>
+
+    <div class="container">
+        <h1>Add/Edit Order</h1>
+        <form>
+            <input type="hidden" class="form-control" name="orderId" id="orderId" th:value="${order.orderId}">
+            <input type="hidden" class="form-control" name="customerId" id="customerId"
+                th:value="${order.customer.customerId}">
+            <div class="form-group">
+                <label for="userName">Date Requested</label>
+                <input type="date" class="form-control" th:name="orderDate" id="orderDate"
+                    aria-describedby="orderDateHelp" placeholder="02-12-2020" th:value="${order.orderDate}">
+            </div>
+            <div class="form-group">
+                <label for="userName">Date Fulfilled</label>
+                <input type="date" class="form-control" th:name="fulfillmentDate" id="fulfillmentDate"
+                    aria-describedby="fulfillmentDateHelp" placeholder="02-12-2020" th:value="${order.fulfillmentDate}">
+            </div>
+            <div class="form-group">
+                <label for="status">Status</label>
+                <input type="status" class="form-control" id="status" aria-describedby="statusHelp"
+                    placeholder="Enter status" th:value="${order.status}">
+            </div>
+            <div class="form-group">
+                <label for="orderPrice">Price</label>
+                <input type="number" class="form-control" name="price" id="orderPrice" aria-describedby="orderPriceHelp"
+                    placeholder="Enter price" th:value="${order.price}">
+            </div>
+            <div class="form-group col">
+                <!-- customers single select, products multiselect -->
+                <label for="userSelect">Sales Rep.</label>
+                <select class="form-control" id="userSelect" name="user">
+                    <option selected value="100" th:value="0" th:selected="${order.user == null}">- Select -
+                    </option>
+                    <option th:each="user : ${users}" th:text="${user.firstName + ' ' + user.lastName}"
+                        th:value="${user.userID}" th:selected="${user.equals(order.user)}">
+                        Sally SalesRep</option>
+                </select>
+                <div th:if="${#fields.hasErrors('order.user')}">
+                    <p th:each="error : ${#fields.errors('order.user')}" class="alert alert-danger" th:text="${error}">
+                        Bad name </p>
+                </div>
+              </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <div th:replace="~{shared :: jsPlugins}"></div>
+</body>
+
+</html>
