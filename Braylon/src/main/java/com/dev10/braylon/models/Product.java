@@ -5,7 +5,7 @@
  */
 package com.dev10.braylon.models;
 
-import java.math.BigDecimal;
+
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,6 +31,6 @@ public class Product {
     private Integer inventory;
 
     @Column(nullable = false)
-    private BigDecimal price;
+    private Double price;
 
 }
