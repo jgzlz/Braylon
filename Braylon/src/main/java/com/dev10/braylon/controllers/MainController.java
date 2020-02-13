@@ -48,13 +48,13 @@ public abstract class MainController {
     @GetMapping("/home")
     public String loadHomePage(Model model) {
         if(userIsAdmin()) {
-            return "homeAdmin";
+            return "home";
         }
         else {
             List<SalesVisit> visits = uServ.findAllSalesVisitsByUsername(currentUser.getUsername());
             model.addAttribute("orders", currentUser.getOrders());
             model.addAttribute("salesVisits", visits);
-            return "homeSalesRep";
+            return "home";
         }
     }
     
