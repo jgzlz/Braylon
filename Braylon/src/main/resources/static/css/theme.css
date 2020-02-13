@@ -18,7 +18,7 @@ body{
 /* sets all website table rows to be alternating colors  */
 tbody > tr:nth-of-type(even),
 .row-striped:nth-of-type(even){
-    background: linear-gradient(to right, #b4b288, #ada95d 50%);
+    background: linear-gradient(to right, #bbbbab, #a09d66 50%);
     color: floralwhite;
 }
 tbody > tr:nth-of-type(odd),
@@ -45,9 +45,9 @@ tbody > tr:nth-of-type(odd) a:not(.btn){
 table,
 .container > form,
 .prettyBox {
-    -moz-box-shadow:    3px 3px 5px 6px #ccc;
-    -webkit-box-shadow: 3px 3px 5px 6px #ccc;
-    box-shadow:         3px 3px 5px 6px #ccc;
+    -moz-box-shadow:    6px 6px 3px 4px #ccc;
+    -webkit-box-shadow: 6px 6px 3px 4px #ccc;
+    box-shadow:         6px 6px 3px 4px #ccc;
 }
 
 /* a bolding class for all page titles */
