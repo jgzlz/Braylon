@@ -19,8 +19,8 @@
         <form>
             <input type="hidden" class="form-control" name="salesVisitId" id="salesVisitId"
                 th:value="${salesVisit.salesVisitId}">
-            <input type="hidden" class="form-control" name="customerId" id="customerId"
-                th:value="${salesVisit.customer.customerId}">
+            <input type="hidden" class="form-control" name="userId" id="userId"
+                th:value="${salesVisit.user.userId}">
             <div class="form-group">
                 <label for="userName">Visit date</label>
                 <input type="date" class="form-control" th:name="visitDate" id="visitDate"
@@ -39,16 +39,16 @@
             </div>
             <div class="form-group col">
                 <!-- turn into customer select based on user -->
-                <label for="userSelect">Sales Rep.</label>
-                <select class="form-control" id="userSelect" name="user">
-                    <option selected value="100" th:value="0" th:selected="${salesvisit.user == null}">- Select -
+                <label for="customerSelect">Sales Rep.</label>
+                <select class="form-control" id="customerSelect" name="customer">
+                    <option selected value="100" th:value="0" th:selected="${salesvisit.customer == null}">- Select -
                     </option>
-                    <option th:each="user : ${users}" th:text="${user.firstName + ' ' + user.lastName}"
-                        th:value="${user.userID}" th:selected="${user.equals(salesvisit.user)}">
+                    <option th:each="customer : ${customers}" th:text="${customer.firstName + ' ' + customer.lastName}"
+                        th:value="${customer.customerID}" th:selected="${customer.equals(salesvisit.customer)}">
                         Sally SalesRep</option>
                 </select>
-                <div th:if="${#fields.hasErrors('salesvisit.user')}">
-              <p th:each="error : ${#fields.errors('salesvisit.user')}" class="alert alert-danger" th:text="${error}">
+                <div th:if="${#fields.hasErrors('salesvisit.customer')}">
+              <p th:each="error : ${#fields.errors('salesvisit.customer')}" class="alert alert-danger" th:text="${error}">
                   Bad name </p>
           </div>
         </div>
