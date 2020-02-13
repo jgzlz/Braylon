@@ -3,6 +3,7 @@ package com.dev10.braylon.controllers;
 
 import com.dev10.braylon.models.Order;
 import com.dev10.braylon.models.Customer;
+import com.dev10.braylon.models.Product;
 import com.dev10.braylon.models.Role;
 import com.dev10.braylon.models.SalesVisit;
 import com.dev10.braylon.models.User;
@@ -14,6 +15,7 @@ import com.dev10.braylon.service.userService;
 import java.security.Principal;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,6 +41,9 @@ public abstract class MainController {
     
     @Autowired
     private userService uServ;
+    
+    @Autowired
+    private BCryptPasswordEncoder encoder;
 
     @GetMapping("/home")
     public String loadHomePage(Model model) {
@@ -63,59 +68,97 @@ public abstract class MainController {
             custList = cServ.findAllCustomersByUsername(currentUser.getUsername());
         }
         model.addAttribute("customers", custList);
-        return "customers";
+        return "customer";
     }
     
+    //Adding Customer
     @GetMapping("/addCustomer")
     public String loadAddingCustomer(Model model) {
         if(userIsAdmin()) {
             model.addAttribute("salesReps", uServ.findAllSalesReps());
         }
         model.addAttribute("customer", null);
-        return "addCustomer";
+        return "customerDetail";
     }
     
     @PostMapping("/addCustomer")
-    public String addNewCustomer() {
-        
+    public String addNewCustomer(Customer customer) {
+        cServ.addCustomer(customer);
         return "redirect:/home";
     }
     
-    @GetMapping("/editCustomer/{customerId}")
+    //Editing Customer
+    @GetMapping("/customer/{customerId}")
     public String loadEditCustomer(Model model, @PathVariable int customerId) {
         Customer customer = cServ.findCustomerById(customerId);
         if(userIsAdmin()) {
             model.addAttribute("salesReps", uServ.findAllSalesReps());
         }
         model.addAttribute("customer", customer);
-        return "addCustomer";
+        return "customerDetail";
     }
     
-    @PostMapping("/editCustomer")
+    @PostMapping("/customer/{customerId}")
+    public String editCustomer(@PathVariable int customerId, Customer customer) {
+        cServ.editCustomer(customer);
+        return "redirect:/home";
+    }
+    
+    //Adding SalesRep
+    @GetMapping("/addSalesRep")
+    public String loadAddingSalesRep() {
+        //add header to differenciate
+        return "salesRepDetail";
+    }
+    
+    @PostMapping("/addSalesRep")
+    public String addNewSalesRep(User user) {
+        user.setPassword(encoder.encode(user.getPassword()));
+        uServ.addUser(user);
+        return "redirect:/home";
+    }
+    
+    //Editing SalesRep
+    @GetMapping("/salesRep/{username}")
+    public String loadEditSalesRep(Model model, @PathVariable String username) {
+        User user = uServ.findUserByUsername(username);
+        model.addAttribute("salesRep", user);
+        return "salesRepDetail";
+    }
+    
+    @PostMapping("/salesRep/{username}")
+    public String editSalesRep(@PathVariable String username, User user) {
+        uServ.editUser(user);
+        return "redirect:/home";
+    }
     
     //Adding SalesVisit
     @GetMapping("/addSalesVisit")
-    public String viewAddSalesVisit(Model model, SalesVisit visit) {
-        
-        return "addSalesVisit";
+    public String viewAddSalesVisit(Model model) {
+        List<Customer> customers = cServ.findAllCustomersByUsername(currentUser.getUsername());
+        model.addAttribute("customers", customers);
+        return "salesVisitDetail";
     }
     
     @PostMapping("/addSalesVisit")
-    public String processAddSalesVisit(Model model, SalesVisit visit) {
-        
+    public String processAddSalesVisit(SalesVisit visit) {
+        svServ.addSalesVisit(visit);
         return "redirect:/home";
     }
     
     //Adding Order
     @GetMapping("/addOrder")
     public String viewAddOrder(Model model, Order order) {
-        
-        return "addOrder";
+        List<Customer> customers = cServ.findAllCustomersByUsername(currentUser.getUsername());
+        model.addAttribute("customers", customers);
+        List<Product> products = pServ.findAllProducts();
+        model.addAttribute("products", products);
+        return "orderDetail";
     }
     
     @PostMapping("/addOrder")
-    public String processAddOrder(Principal principal, Model model, Order order) {
-        
+    public String processAddOrder(Principal principal, Order order) {
+        oServ.addOrder(order);
         return "redirect:/home";
     }
     

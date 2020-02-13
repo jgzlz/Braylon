@@ -24,9 +24,27 @@ public class customerService {
         return all;
     }
     
-        public Customer findCustomerById(int customerId) {
+    public Customer findCustomerById(int customerId) {
         return cDao.findById(customerId).orElse(null);
     }
     
+    public void addCustomer(Customer customer) {
+        //Validations Here
+        if(customer.getAddress() == null || customer.getCompanyName() == null || customer.getCustomerFirstName() == null || customer.getCustomerLastName() == null || customer.getEmail() == null || customer.getPhone() == null) {
+            return;
+        }
+        cDao.save(customer);
+    }
+
+    public void editCustomer(Customer customer) {
+        //Validations Here
+        if(cDao.findById(customer.getCustomerId()) == null) {
+            return;
+        }
+        if(customer.getAddress() == null || customer.getCompanyName() == null || customer.getCustomerFirstName() == null || customer.getCustomerLastName() == null || customer.getEmail() == null || customer.getPhone() == null) {
+            return;
+        }
+        cDao.save(customer);
+    }
     
 }
