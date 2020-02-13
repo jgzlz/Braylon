@@ -31,9 +31,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
         http
                 .authorizeRequests()
                     .antMatchers("/home").authenticated()
-                    .antMatchers("/addSalesRep", "/editSalesRep").hasRole("ADMIN")
-                    .antMatchers("/salesRep").hasRole("USER")
-                    .antMatchers("/customers", "/addCustomer","/editCustomer","/addSalesVisit","/addOrder").authenticated()
+                    .antMatchers("/addSalesRep", "/salesRep/**").hasRole("ADMIN")
+                    .antMatchers("/customers", "/addCustomer","/customer/**","/addSalesVisit","/addOrder").authenticated()
                 .and()
                 .formLogin()
                     .loginPage("/login")
