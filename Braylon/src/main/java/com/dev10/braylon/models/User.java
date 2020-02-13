@@ -7,7 +7,7 @@ package com.dev10.braylon.models;
 
 import java.util.List;
 import java.util.Objects;
-import javax.management.relation.Role;
+import com.dev10.braylon.models.Role;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -49,15 +49,14 @@ public class User {
     private String username;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "userRole",
+    @JoinTable(name = "user_role",
     joinColumns = {
-    @JoinColumn(name = "userId")},
+    @JoinColumn(name = "user_id")},
     inverseJoinColumns = {
-    @JoinColumn(name = "roleId")})
+    @JoinColumn(name = "role_id")})
     private List<Role> roles;
 
-    @OneToMany
-    @JoinColumn(name = "userId")
+    @OneToMany(mappedBy="user")
     private List<Order> orders;
 
 
