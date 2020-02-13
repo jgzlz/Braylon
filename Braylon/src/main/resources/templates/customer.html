@@ -36,7 +36,7 @@
                             th:text="${customer.salesRep.firstName + ' ' + customer.salesRep.lastName}" href="#"
                             th:href="${'/salesRep/' + customer.salesRep.salesRepID}">Mark Otto</a></td>
                     <td class="customerLink"><a class="btn btn-warning text-danger" href="./customerDetail.html"
-                            th:href="${'/customer/' + customer.customerID}">View/Edit</a></td>
+                            th:href="${'/customer/' + customer.customerId}">View/Edit</a></td>
                 </tr>
             </tbody>
         </table>

@@ -14,7 +14,6 @@
 
 <body>
     <div th:replace="~{shared :: nav}"></div>
-
     <div class="container">
         <h1>Add/Edit Sales Visit</h1>
         <form>
@@ -39,6 +38,7 @@
                 </textarea>
             </div>
             <div class="form-group col">
+                <!-- turn into customer select based on user -->
                 <label for="userSelect">Sales Rep.</label>
                 <select class="form-control" id="userSelect" name="user">
                     <option selected value="100" th:value="0" th:selected="${salesvisit.user == null}">- Select -
