@@ -5,7 +5,7 @@
  */
 package com.dev10.braylon.models;
 
-import java.math.BigDecimal;
+
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,7 +31,7 @@ public class Product {
     private Integer inventory;
 
     @Column(nullable = false)
-    private BigDecimal price;
+    private Double price;
 
     public Integer getProductId() {
         return productId;
@@ -57,21 +57,21 @@ public class Product {
         this.inventory = inventory;
     }
 
-    public BigDecimal getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 23 * hash + Objects.hashCode(this.productId);
-        hash = 23 * hash + Objects.hashCode(this.productName);
-        hash = 23 * hash + Objects.hashCode(this.inventory);
-        hash = 23 * hash + Objects.hashCode(this.price);
+        hash = 47 * hash + Objects.hashCode(this.productId);
+        hash = 47 * hash + Objects.hashCode(this.productName);
+        hash = 47 * hash + Objects.hashCode(this.inventory);
+        hash = 47 * hash + Objects.hashCode(this.price);
         return hash;
     }
 
@@ -102,4 +102,6 @@ public class Product {
         return true;
     }
 
+    
+    
 }

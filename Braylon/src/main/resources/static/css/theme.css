@@ -11,3 +11,43 @@ body{
     border: 1px solid grey;
     border-radius: 10px;
 }
+
+/* sets all website table rows to be alternating colors  */
+tbody > tr:nth-of-type(even),
+.row-striped:nth-of-type(even),
+thead > tr {
+    background: linear-gradient(to right, #b4b288, #ada95d 50%);
+    color: floralwhite;
+}
+tbody > tr:nth-of-type(odd),
+.row-striped:nth-of-type(odd) {
+    background: linear-gradient(to right, #d8d8d8, #bdbcaa 50%);
+    color: black;
+}
+
+
+/* fixes buttons on alternating color table rows */
+tbody > tr:nth-of-type(even) a:not(.btn){
+    color: floralwhite;
+}
+tbody > tr:nth-of-type(odd) a:not(.btn){
+    color: black;
+}
+
+/* adds a box shadow to all site tables */
+table{
+    -moz-box-shadow:    3px 3px 5px 6px #ccc;
+    -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+    box-shadow:         3px 3px 5px 6px #ccc;
+}
+
+/* a bolding class for all page titles */
+.pageTitle{
+    font-weight: bold;
+}
+
+/* sets button text color to white to override other 
+text color changes. */
+.btn{
+    color: floralWhite !important;
+}
