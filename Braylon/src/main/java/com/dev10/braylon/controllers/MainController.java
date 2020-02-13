@@ -13,6 +13,7 @@ import com.dev10.braylon.service.productService;
 import com.dev10.braylon.service.salesVisitService;
 import com.dev10.braylon.service.userService;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -48,11 +49,12 @@ public abstract class MainController {
     @GetMapping("/home")
     public String loadHomePage(Model model) {
         if(userIsAdmin()) {
+            model.addAttribute("orders", new ArrayList());
+            model.addAttribute("salesVisits", new ArrayList());
             return "home";
         }
         else {
             List<SalesVisit> visits = uServ.findAllSalesVisitsByUsername(currentUser.getUsername());
-            model.addAttribute("orders", currentUser.getOrders());
             model.addAttribute("salesVisits", visits);
             return "home";
         }
