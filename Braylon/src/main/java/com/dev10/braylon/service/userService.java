@@ -1,9 +1,9 @@
 package com.dev10.braylon.service;
 
+import com.dev10.braylon.data.RoleDao;
 import com.dev10.braylon.data.SalesVisitDao;
 import com.dev10.braylon.data.UserDao;
-import com.dev10.braylon.models.Customer;
-import com.dev10.braylon.models.Bill;
+import com.dev10.braylon.models.Role;
 import com.dev10.braylon.models.SalesVisit;
 import com.dev10.braylon.models.User;
 import java.util.ArrayList;
@@ -21,10 +21,7 @@ public class userService {
     SalesVisitDao salesVisitDao;
     
     @Autowired
-    customerService cServ;
-    
-    @Autowired
-    billService oServ;
+    RoleDao roleDao;
     
     
     public User findUserByUsername(String username) {
@@ -48,7 +45,13 @@ public class userService {
     }
        
     public List<User> findAllSalesReps() {
-        List<User> myUsers = dao.findAllSalesReps();
+        List<User> myUsers = dao.findAllUsersByRolesRole("ROLE_USER");
+        Role admin = roleDao.findRoleByRole("ROLE_ADMIN");
+        for (int i = myUsers.size() - 1; i >= 0; i--) {
+            if (myUsers.get(i).getRoles().contains(admin)) {
+                myUsers.remove(i);
+            }
+        }
         
         return myUsers;
     }
