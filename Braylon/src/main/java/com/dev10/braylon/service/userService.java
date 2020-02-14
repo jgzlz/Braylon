@@ -2,8 +2,11 @@ package com.dev10.braylon.service;
 
 import com.dev10.braylon.data.SalesVisitDao;
 import com.dev10.braylon.data.UserDao;
+import com.dev10.braylon.models.Customer;
+import com.dev10.braylon.models.Bill;
 import com.dev10.braylon.models.SalesVisit;
 import com.dev10.braylon.models.User;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +19,12 @@ public class userService {
     
     @Autowired
     SalesVisitDao salesVisitDao;
+    
+    @Autowired
+    customerService cServ;
+    
+    @Autowired
+    billService oServ;
     
     
     public User findUserByUsername(String username) {
@@ -64,5 +73,14 @@ public class userService {
             return;
         }
         dao.save(user);
+    }
+
+    public List<Bill> findAllOrdersById(Integer userId) {
+        List<Bill> orders = new ArrayList();
+        List<Customer> customers = cServ.getCustomersByUserId(userId);
+        for(Customer c : customers) {
+            orders.addAll(oServ.getOrdersByCustId(c.getCustomerId()));
+        }
+        return orders;
     }
 }

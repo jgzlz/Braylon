@@ -24,7 +24,7 @@ import javax.persistence.ManyToOne;
  * @author Dev10
  */
 @Entity
-public class Order {
+public class Bill {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,10 +33,6 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
-    
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
     
     @Column(nullable = false)
     private LocalDateTime orderDate;
@@ -70,14 +66,6 @@ public class Order {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public LocalDateTime getOrderDate() {
@@ -125,7 +113,6 @@ public class Order {
         int hash = 7;
         hash = 53 * hash + Objects.hashCode(this.orderId);
         hash = 53 * hash + Objects.hashCode(this.customer);
-        hash = 53 * hash + Objects.hashCode(this.user);
         hash = 53 * hash + Objects.hashCode(this.orderDate);
         hash = 53 * hash + Objects.hashCode(this.fulfillmentDate);
         hash = 53 * hash + Objects.hashCode(this.status);
@@ -145,7 +132,7 @@ public class Order {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Order other = (Order) obj;
+        final Bill other = (Bill) obj;
         if (!Objects.equals(this.status, other.status)) {
             return false;
         }
@@ -153,9 +140,6 @@ public class Order {
             return false;
         }
         if (!Objects.equals(this.customer, other.customer)) {
-            return false;
-        }
-        if (!Objects.equals(this.user, other.user)) {
             return false;
         }
         if (!Objects.equals(this.orderDate, other.orderDate)) {

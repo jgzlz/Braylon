@@ -1,14 +1,14 @@
 package com.dev10.braylon.controllers;
 
 
-import com.dev10.braylon.models.Order;
+import com.dev10.braylon.models.Bill;
 import com.dev10.braylon.models.Customer;
 import com.dev10.braylon.models.Product;
 import com.dev10.braylon.models.Role;
 import com.dev10.braylon.models.SalesVisit;
 import com.dev10.braylon.models.User;
 import com.dev10.braylon.service.customerService;
-import com.dev10.braylon.service.orderService;
+import com.dev10.braylon.service.billService;
 import com.dev10.braylon.service.productService;
 import com.dev10.braylon.service.salesVisitService;
 import com.dev10.braylon.service.userService;
@@ -32,7 +32,7 @@ public abstract class MainController {
     private customerService cServ;
     
     @Autowired
-    private orderService oServ;
+    private billService oServ;
     
     @Autowired
     private productService pServ;
@@ -55,6 +55,7 @@ public abstract class MainController {
         }
         else {
             List<SalesVisit> visits = uServ.findAllSalesVisitsByUsername(currentUser.getUsername());
+            List<Bill> orders = uServ.findAllOrdersById(currentUser.getUserId());
             model.addAttribute("salesVisits", visits);
             return "home";
         }
@@ -153,7 +154,7 @@ public abstract class MainController {
     
     //Adding Order
     @GetMapping("/addOrder")
-    public String viewAddOrder(Model model, Order order) {
+    public String viewAddOrder(Model model, Bill order) {
         List<Customer> customers = cServ.findAllCustomersByUsername(currentUser.getUsername());
         model.addAttribute("customers", customers);
         List<Product> products = pServ.findAllProducts();
@@ -162,7 +163,7 @@ public abstract class MainController {
     }
     
     @PostMapping("/addOrder")
-    public String processAddOrder(Principal principal, Order order) {
+    public String processAddOrder(Principal principal, Bill order) {
         oServ.addOrder(order);
         return "redirect:/home";
     }

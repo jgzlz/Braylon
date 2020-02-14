@@ -29,19 +29,19 @@ create table customer (
 
 insert into customer values (1, 'Beth', 'Raymond', '123 Main St','123-123-1234','Genesis10','beth@beth.com', 1),(2, 'Joe', 'Gonzalez', '10 Joe Lane','234-123-1245','Joe Gonzalez','Joe@joe.joe', 2);
 
-create table `Order` (
+create table `order` (
 	order_id int primary key auto_increment,
     customer_id int not null,
     order_date date not null,
     fulfillment_date date,
     `status` varchar(50) not null,
     price decimal not null,
-    user_id int not null,
-    foreign key (user_id) references `user`(user_id),
+--     user_id int not null,
+--     foreign key (user_id) references `user`(user_id),
     foreign key (customer_id) references customer(customer_id)
 );
 
-insert into `Order` values (1,1,'2020-02-12','2020-03-12','pending','20123.12','1'),(2,2,'2020-02-12','2020-03-12','pending','1234.12','2'),(3,1,'2020-02-12','2020-03-12','pending','5342.12','2'),(4,2,'2020-02-12','2020-03-12','pending','2123.12','3');
+insert into `order` values (1,1,'2020-02-12','2020-03-12','pending','20123.12','1'),(2,2,'2020-02-12','2020-03-12','pending','1234.12','2'),(3,1,'2020-02-12','2020-03-12','pending','5342.12','2'),(4,2,'2020-02-12','2020-03-12','pending','2123.12','3');
 
 create table `role`(
 	role_id int primary key auto_increment,
