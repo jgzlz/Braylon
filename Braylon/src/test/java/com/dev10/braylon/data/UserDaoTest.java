@@ -5,10 +5,8 @@
  */
 package com.dev10.braylon.data;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
+import com.dev10.braylon.models.User;
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,27 +20,11 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
 public class UserDaoTest {
-    
+
     @Autowired
     private UserDao userDao;
-    
+
     public UserDaoTest() {
-    }
-    
-    @BeforeAll
-    public static void setUpClass() {
-    }
-    
-    @AfterAll
-    public static void tearDownClass() {
-    }
-    
-    @BeforeEach
-    public void setUp() {
-    }
-    
-    @AfterEach
-    public void tearDown() {
     }
 
     /**
@@ -50,13 +32,18 @@ public class UserDaoTest {
      */
     @Test
     public void testFindUserByUsername() {
-    }
+        User mayzer = userDao.findUserByUsername("Mayzer");
+        User jake = userDao.findUserByUsername("Jake");
 
-    /**
-     * Test of findUserUsername method, of class UserDao.
-     */
-    @Test
-    public void testFindUserUsername() {
+        assertEquals(mayzer.getEmail(), "mayzer@mayzer.com");
+        assertEquals(mayzer.getFirstName(), "Mayzer");
+        assertEquals(mayzer.getLastName(), "Muhammed");
+//        assertEquals(mayzer.getOrders().size(), 1);
+
+        assertEquals(jake.getEmail(), "jake@jake.com");
+        assertEquals(jake.getFirstName(), "Jake");
+        assertEquals(jake.getLastName(), "White");
+//        assertEquals(jake.getOrders().size(), 2);
     }
 
     /**
@@ -64,6 +51,7 @@ public class UserDaoTest {
      */
     @Test
     public void testFindSalesRepCount() {
+//        assertEquals(userDao.findSalesRepCount().intValue(), 3);
     }
 
     /**
@@ -71,6 +59,7 @@ public class UserDaoTest {
      */
     @Test
     public void testFindAllSalesReps() {
+        assertEquals(3, userDao.findAllSalesReps().size());
     }
 
     /**
@@ -78,8 +67,7 @@ public class UserDaoTest {
      */
     @Test
     public void testFindRoleByUsername() {
+        assertEquals("ROLE_ADMIN",userDao.findRoleByUsername("Mayzer"));
     }
 
-    
-    
 }
