@@ -56,7 +56,7 @@ create table user_role(
 	foreign key (role_id) references Role(role_id)
 );
 
-insert into user_role values (1,1),(1,2),(2,1);
+insert into user_role values (1,1),(1,2),(2,2),(3,2);
     
 create table `product` (
 	product_id int primary key auto_increment,
