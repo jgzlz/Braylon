@@ -142,15 +142,21 @@ public abstract class MainController {
     }
 
     //Adding SalesVisit
-    @GetMapping("/addSalesVisit")
-    public String viewAddSalesVisit(Model model) {
+    @GetMapping("/addSalesVisit/{username}")
+    public String viewAddSalesVisit(Model model, @PathVariable String username) {
         List<Customer> customers = cServ.findAllCustomersByUsername(currentUser.getUsername());
         model.addAttribute("customers", customers);
+        User user = new User();
+        Customer cust = new Customer();
+        SalesVisit sv = new SalesVisit();
+        sv.setUser(user);
+        sv.setCustomer(cust);
+        model.addAttribute("salesVisit", sv);
         return "salesVisitDetail";
     }
 
-    @PostMapping("/addSalesVisit")
-    public String processAddSalesVisit(SalesVisit visit) {
+    @PostMapping("/addSalesVisit/{username}")
+    public String processAddSalesVisit(SalesVisit visit, @PathVariable String username) {
         svServ.addSalesVisit(visit);
         return "redirect:/home";
     }
