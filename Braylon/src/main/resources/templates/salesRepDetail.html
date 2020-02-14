@@ -8,6 +8,7 @@
     <title>Braylon Enterprises -- Sales Rep. Detail</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
       integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../static/css/theme.css">
   </div>
 
   <link rel="stylesheet" type="text/css" th:href="'/css/customerDetail.css'" href="../static/css/customerDetail.css">
@@ -17,7 +18,7 @@
   <div th:replace="~{shared :: nav}"></div>
 
   <div class="container">
-    <h1 th:text="${header + ' Sales Representative'}">Add/Edit Sales Representative</h1>
+    <h1 th:text="${header + ' Sales Representative'}" class="pageTitle">Add/Edit Sales Representative</h1>
     <form>
       <input type="hidden" class="form-control" name="userId" id="userId" th:value="${user.userId}">
       <div class="form-group">
