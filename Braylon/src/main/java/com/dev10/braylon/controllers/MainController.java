@@ -75,8 +75,8 @@ public abstract class MainController {
     //Adding Customer
     @GetMapping("/addCustomer/{username}")
     public String loadAddingCustomer(@PathVariable String username, Model model) {
-        if (userIsAdmin()) {
-            model.addAttribute("salesReps", uServ.findAllSalesReps());
+        if(userIsAdmin()) {
+            model.addAttribute("users", uServ.findAllSalesReps());
         }
         Customer customer = new Customer();
         model.addAttribute("customer", customer);
@@ -173,8 +173,8 @@ public abstract class MainController {
     private boolean userIsAdmin() {
         List<Role> userRoles = currentUser.getRoles();
         boolean isAdmin = false;
-        for (Role r : userRoles) {
-            if (r.getRole() == "ROLE_ADMIN") {
+        for(Role r : userRoles) {
+            if(r.getRole().equals("ROLE_ADMIN")) {
                 isAdmin = true;
             }
         }
