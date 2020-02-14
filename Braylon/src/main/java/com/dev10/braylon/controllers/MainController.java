@@ -173,8 +173,8 @@ public abstract class MainController {
     private boolean userIsAdmin() {
         List<Role> userRoles = currentUser.getRoles();
         boolean isAdmin = false;
-        for (Role r : userRoles) {
-            if (r.getRole() == "ROLE_ADMIN") {
+        for(Role r : userRoles) {
+            if(r.getRole().equals("ROLE_ADMIN")) {
                 isAdmin = true;
             }
         }
