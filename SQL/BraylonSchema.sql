@@ -93,6 +93,11 @@ create table sales_visit (
 insert into sales_visit values (1,'2020-02-12',2,1,'Home','ahhh'),(2,'2020-02-14',1,2,'Company','ahhh'),(3,'2020-02-16',2,3,'Home','ahhh'),(4,'2020-02-17',1,2,'Home','ahhh'),(5,'2020-02-18',2,1,'AHOIASFH','ahhh');
 
 
+-- select r.role 
+-- from user u
+-- join user_role ur 
+-- on u.user_id
+
 -- select * from customer;
 -- select * from user;
 -- Select * from user u where username like "Beth";

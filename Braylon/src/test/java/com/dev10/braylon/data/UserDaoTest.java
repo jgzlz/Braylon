@@ -67,7 +67,7 @@ public class UserDaoTest {
      */
     @Test
     public void testFindRoleByUsername() {
-        assertEquals("ROLE_ADMIN",userDao.findRoleByUsername("Mayzer"));
+        assertEquals("ROLE_ADMIN",userDao.findRoleByUsername("Jake"));
     }
 
 }
