@@ -55,7 +55,7 @@
         <select class="form-control" id="userSelect" name="user">
           <option selected value="100" th:value="0" th:selected="${customer.user == null}">- Select -</option>
           <option th:each="user : ${users}" th:text="${user.firstName + ' ' + user.lastName}"
-            th:value="${user.userID}" th:selected="${user.equals(customer.user)}">
+            th:value="${user.userId}" th:selected="${user.equals(customer.user)}">
             Sally SalesRep</option>
         </select>
         <div th:if="${#fields.hasErrors('customer.user')}">
