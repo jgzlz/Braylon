@@ -32,10 +32,10 @@
             </thead>
             <tbody>
                 <tr th:each="customer : ${customers}">
-                    <td th:text="${customer.customerFirstName + ' ' + customer.lastName}">Blobbly Blandlerslon</td>
+                    <td th:text="${customer.customerFirstName + ' ' + customer.customerLastName}">Blobbly Blandlerslon</td>
                     <td class="salesRepLink"><a
-                            th:text="${customer.salesRep.firstName + ' ' + customer.salesRep.lastName}" href="#"
-                            th:href="${'/salesRep/' + customer.salesRep.salesRepID}">Mark Otto</a></td>
+                            th:text="${customer.user.firstName + ' ' + customer.user.lastName}" href="#"
+                            th:href="${'/salesRep/' + customer.user.userId}">Mark Otto</a></td>
                     <td class="customerLink"><a class="btn btn-warning text-danger" href="./customerDetail.html"
                             th:href="${'/customer/' + customer.customerId}">View/Edit</a></td>
                 </tr>

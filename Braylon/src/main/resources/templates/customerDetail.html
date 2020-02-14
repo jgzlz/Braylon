@@ -18,8 +18,9 @@
 
   <div class="container">
     <h1 class="pageTitle">Add/Edit Customer</h1>
-    <form>
+    <form method="POST" th:action="${'/customer/' + customer.customerId}">
       <input type="hidden" class="form-control" name="customerId" id="customerId" th:value="${customer.customerId}">
+      <input type="hidden" class="form-control" name="user" id="userId" th:value="${customer.user.userId}" sec:authorize="!hasRole('ROLE_ADMIN')">
       <div class="form-group">
         <label for="customerFirstName">First Name</label>
         <input type="text" class="form-control" name="customerFirstName" id="customerFirstName"
@@ -37,9 +38,9 @@
           placeholder="Enter address" th:value="${customer.address}">
       </div>
       <div class="form-group">
-        <label for="phoneNumber">Phone Number</label>
-        <input type="phone" class="form-control" name="phoneNumber" id="phoneNumber" aria-describedby="phoneNumberHelp"
-          placeholder="Enter phone number" th:value="${customer.phoneNumber}">
+        <label for="phone">Phone Number</label>
+        <input type="phone" class="form-control" name="phone" id="phone" aria-describedby="phoneHelp"
+          placeholder="Enter phone number" th:value="${customer.phone}">
       </div>
       <div class="form-group">
         <label for="companyName">Company Name</label>
@@ -51,7 +52,7 @@
         <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp"
           placeholder="Enter email" th:value="${customer.email}">
       </div>
-      <div class="form-group col">
+      <div class="form-group col" sec:authorize="hasRole('ROLE_ADMIN')">
         <label for="userSelect">Sales Rep.</label>
         <select class="form-control" id="userSelect" name="user">
           <option selected value="100" th:value="0" th:selected="${customer.user == null}">- Select -</option>

@@ -15,7 +15,7 @@
 </head>
 <th:block th:fragment="nav">
     <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark navbar-fixed" sec:authorize="isAnonymous()">
-        <a class="navbar-brand" href="./about.html" th:href="'/'"><img th:src="'/img/image.png'" src="../static/img/image.png" title="home"
+        <a class="navbar-brand" href="./about.html" th:href="'/home'"><img th:src="'/img/image.png'" src="../static/img/image.png" title="home"
                 width="100" height="50" /></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,7 +36,7 @@
         </div>
     </nav>
     <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark " sec:authorize="isAuthenticated()">
-        <a class="navbar-brand" href="./about.html" th:href="'/'"><img th:src="'/img/image.png'" src="../static/img/image.png" title="home"
+        <a class="navbar-brand" href="./about.html" th:href="'/home'"><img th:src="'/img/image.png'" src="../static/img/image.png" title="home"
             width="100" height="50" /></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
