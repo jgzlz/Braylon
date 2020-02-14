@@ -7,6 +7,9 @@ body{
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe', GradientType=1 );
 }
 
+/* url("../img/braylonbiglogo.png") no-repeat center, */
+
+
 .border{
     border: 1px solid grey;
     border-radius: 10px;
@@ -14,8 +17,7 @@ body{
 
 /* sets all website table rows to be alternating colors  */
 tbody > tr:nth-of-type(even),
-.row-striped:nth-of-type(even),
-thead > tr {
+.row-striped:nth-of-type(even){
     background: linear-gradient(to right, #b4b288, #ada95d 50%);
     color: floralwhite;
 }
@@ -25,8 +27,11 @@ tbody > tr:nth-of-type(odd),
     color: black;
 }
 
+thead > tr {
+    background-color: #343a40;
+    color: white;
+}
 
-/* fixes buttons on alternating color table rows */
 tbody > tr:nth-of-type(even) a:not(.btn){
     color: floralwhite;
 }
@@ -34,8 +39,12 @@ tbody > tr:nth-of-type(odd) a:not(.btn){
     color: black;
 }
 
+/* fixes buttons on alternating color table rows */
+
 /* adds a box shadow to all site tables */
-table{
+table,
+.container > form,
+.prettyBox {
     -moz-box-shadow:    3px 3px 5px 6px #ccc;
     -webkit-box-shadow: 3px 3px 5px 6px #ccc;
     box-shadow:         3px 3px 5px 6px #ccc;
@@ -50,4 +59,18 @@ table{
 text color changes. */
 .btn{
     color: floralWhite !important;
+}
+
+/* sets form colors */
+.container > form,
+.prettyBox {
+    margin: 2% 0% 5% 0%;
+    padding: 2% 1.5%;
+    border: 2px solid rgb(53, 1, 1);
+    background: linear-gradient(to bottom, #d8d8d8, #bdbcaa 50%);
+}
+
+/* sets error colors */
+.error{
+    color: red;
 }
