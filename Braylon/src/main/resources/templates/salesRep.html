@@ -31,7 +31,7 @@
             </thead>
             <tbody>
                 <tr th:each="user : ${users}">
-                    <td th:text="${user.userName}">MarkO1987</td>
+                    <td th:text="${user.username}">MarkO1987</td>
                     <td th:text="${user.firstName + ' ' + user.lastName}">Mark Otto</td>
                     <td th:text="${user.email}">Mark@otto.com</td>
                     <td sec:authorize="hasRole('ROLE_ADMIN')" class="customerLink"><a
