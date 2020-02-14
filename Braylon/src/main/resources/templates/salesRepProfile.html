@@ -25,8 +25,8 @@
             <p>Email Address: <span th:text="${user.email}">email</span></p>
             <hr />
             <div th:switch="${user.enabled}">
-                <p th:case="#{true}" class="text-success tightBox">Enabled</p>
-                <p th:case="#{false}" class="text-danger tightBox">Disabled</p>
+                <p th:case="true" class="text-success tightBox">Enabled</p>
+                <p th:case="false" class="text-danger tightBox">Disabled</p>
                 <p th:case="*" class="text-warning tightBox">Unknown</p>
             </div>
         </article>
