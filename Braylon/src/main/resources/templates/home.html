@@ -71,10 +71,9 @@
                         <td th:text="${salesVisit.salesVisitId}">text</td>
                         <td th:text="${salesVisit.visitDate}">text</td>
                         <td th:text="${salesVisit.customer.customerFirstName + ' ' + salesVisit.customer.customerLastName}">text</td>
-                        <td th:text="${user.userId}">text</td>
+                        <td th:text="${salesVisit.user.userId}">text</td>
                         <td th:text="${salesVisit.location}">text</td>
                         <td th:text="${salesVisit.notes}">text</td>
-                        <td th:text="${salesVisit.notesTitle}">text</td>
                         <td>
                             <a class="btn btn-danger" th:href="${'/deleteNotes/'+#authentication.name}"
                                 sec:authorize="isAuthenticated()">Delete</a>
