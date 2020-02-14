@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <div th:replace="~{shared :: head(title='Sales Rep. Detail')}">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Braylon Enterprises -- Sales Rep. Detail</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+            integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="../static/css/theme.css">
+    </div>
+
+    <link rel="stylesheet" type="text/css" th:href="'/css/customerDetail.css'" href="../static/css/customerDetail.css">
+</head>
+
+<body>
+    <div th:replace="~{shared :: nav}"></div>
+
+    <div class="container">
+        <article class="prettyBox">
+            <h1 th:text="${header + ' Sales Representative'}" class="pageTitle"><span
+                    th:text="${user.firstName + ' ' + user.lastName}">Sally SalesRep</span>'s Profile</h1>
+            <p>Username: <span th:text="${user.username}">username</span></p>
+            <p>Email Address: <span th:text="${user.email}">email</span></p>
+            <p>Phone Number: <span th:text="${user.phone}">phone#</span></p>
+            <hr />
+            <div th:switch="${user.isEnabled}">
+                <p th:case="#{true}" class="text-success tightBox">Enabled</p>
+                <p th:case="#{false}" class="text-danger tightBox">Disabled</p>
+                <p th:case="*" class="text-warning tightBox">Unknown</p>
+            </div>
+        </article>
+
+    </div>
+
+    <div th:replace="~{shared :: jsPlugins}"></div>
+</body>
+
+</html>

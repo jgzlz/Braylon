@@ -28,7 +28,7 @@
         <div class="row">
             <table class="table" style="width:100%; float:left">
                 <thead>
-                    <th>Order Id:</th>
+                    <th>Bill Id:</th>
                     <th>Customer Id:</th>
                     <th>Customer Name:</th>
                     <th>Order Date:</th>
@@ -38,14 +38,14 @@
                     <th>&nbsp;</th>
                 </thead>
                 <tbody>
-                    <tr th:each="order : ${orders}">
-                        <td th:text="${order.orderId}">text</td>
-                        <td th:text="${customer.customerId}">text</td>
-                        <td th:text="${customer.customerName}">text</td>
-                        <td th:text="${order.orderDate}">text</td>
-                        <td th:text="${order.fulfillmentDate}">text</td>
-                        <td th:text="${order.status}">text</td>
-                        <td th:text="${order.price}">text</td>
+                    <tr th:each="bill : ${bills}">
+                        <td th:text="${bill.billId}">text</td>
+                        <td th:text="${order.customer.customerId}">text</td>
+                        <td th:text="${order.customer.customerFirstName + ' ' + order.customer.customerLastName}">text</td>
+                        <td th:text="${bill.billDate}">text</td>
+                        <td th:text="${bill.fulfillmentDate}">text</td>
+                        <td th:text="${bill.status}">text</td>
+                        <td th:text="${bill.price}">text</td>
                         <td>
                             <a class="btn btn-danger" href="#" th:href="${'/deleteNotes/'+#authentication.name}"
                                 sec:authorize="isAuthenticated()">Delete</a>
@@ -70,11 +70,10 @@
                     <tr th:each="salesVisit : ${salesVisits}">
                         <td th:text="${salesVisit.salesVisitId}">text</td>
                         <td th:text="${salesVisit.visitDate}">text</td>
-                        <td th:text="${customer.customerName}">text</td>
-                        <td th:text="${user.userId}">text</td>
+                        <td th:text="${salesVisit.customer.customerFirstName + ' ' + salesVisit.customer.customerLastName}">text</td>
+                        <td th:text="${salesVisit.user.userId}">text</td>
                         <td th:text="${salesVisit.location}">text</td>
                         <td th:text="${salesVisit.notes}">text</td>
-                        <td th:text="${salesVisit.notesTitle}">text</td>
                         <td>
                             <a class="btn btn-danger" th:href="${'/deleteNotes/'+#authentication.name}"
                                 sec:authorize="isAuthenticated()">Delete</a>
