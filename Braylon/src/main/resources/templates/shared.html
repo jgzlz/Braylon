@@ -7,16 +7,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-            integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css" th:href="'/bootstrap/css/bootstrap.min.css'">
         <link rel="stylesheet" type="text/css" th:href="'/css/theme.css'" href="../static/css/theme.css">
-        <title th:text="${'Braylon: ' + title}">Workouts</title>
+        <title th:text="${'Braylon: ' + title}">Braylon</title>
     </th:block>
 </head>
 <th:block th:fragment="nav">
-    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark" sec:authorize="isAnonymous()">
-        <a class="navbar-brand" href="./about.html" th:href="'/'"><img th:src="'/img/image.png'" src="../static/img/image.png" title="home"
-                width="100" height="50" /></a>
+    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark navbar-fixed" sec:authorize="isAnonymous()">
+        <a class="navbar-brand" href="./about.html" th:href="'/home'"><img th:src="'/img/image.png'"
+                src="../static/img/image.png" title="home" width="100" height="50" /></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -36,8 +35,8 @@
         </div>
     </nav>
     <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark " sec:authorize="isAuthenticated()">
-        <a class="navbar-brand" href="./about.html" th:href="@{/}"><img th:src="'/img/image.png'" src="../static/img/image.png" title="home"
-            width="100" height="50" /></a>
+        <a class="navbar-brand" href="./about.html" th:href="'/home'"><img th:src="'/img/image.png'"
+                src="../static/img/image.png" title="home" width="100" height="50" /></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -46,12 +45,12 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="./salesRepDetail.html" th:href="${'/salesRep/'+ #authentication.name}">
+                    <a class="nav-link" href="./salesRepProfile.html" th:href="${'/salesRepProfile/'+ #authentication.name}">
                         My
                         Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href= "./salesRep.html" th:href="${'/salesRep/'}">
+                    <a class="nav-link" href="./salesRep.html" th:href="${'/salesRep/'}">
                         Sales Rep.
                     </a>
                 </li>
@@ -62,6 +61,11 @@
                 </li>
                 <li class="nav-item">
                     <a href="./about.html" th:href="'/about'" class="nav-link">About</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item" th:text="${'Hello, ' + #authentication.name}">
+
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">

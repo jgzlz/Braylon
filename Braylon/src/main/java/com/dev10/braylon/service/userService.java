@@ -6,6 +6,7 @@ import com.dev10.braylon.data.UserDao;
 import com.dev10.braylon.models.Role;
 import com.dev10.braylon.models.SalesVisit;
 import com.dev10.braylon.models.User;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -35,7 +35,6 @@ public class Bill {
     @JoinColumn(name = "customer_id", nullable=false)
     private Customer customer;
     
-    
     @Column(nullable = false)
     private LocalDateTime billDate;
 
@@ -158,8 +157,5 @@ public class Bill {
         }
         return true;
     }
-
-   
-
     
 }

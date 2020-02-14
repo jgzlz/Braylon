@@ -26,9 +26,14 @@
     <link rel="stylesheet" type="text/css" th:href="'/css/navbar.css'" href="../static/css/navbar.css">
     <link rel="stylesheet" type="text/css" th:href="'/css/theme.css'" href="../static/css/theme.css">
     <title>Home</title>
+</head>
+
+<body>
     <div class="row m-4">
         <div class=" col text-left m-6" id="titleLink">
-            <h2><a th:href="/home" href="./landingPage.html" class="btn-danger btn-lg">Home</a></h2>
+            <a th:href="/home" href="./landingPage.html" class="btn-danger btn-lg pageTitle">
+                Home
+            </a>
         </div>
         <div class=" col text-right" sec:authorize="isAnonymous()">
             <a href="/login" class="btn-success btn-lg se">Login</a>
@@ -57,10 +62,6 @@
             </div>
         </div>
     </nav>
-</head>
-
-<body>
-
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

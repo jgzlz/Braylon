@@ -36,6 +36,7 @@ create table `bill` (
     fulfillment_date date,
     `status` varchar(50) not null,
     price decimal not null,
+
     foreign key (customer_id) references customer(customer_id)
 );
 

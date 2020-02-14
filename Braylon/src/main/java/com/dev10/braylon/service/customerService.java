@@ -2,6 +2,7 @@ package com.dev10.braylon.service;
 
 import com.dev10.braylon.data.CustomerDao;
 import com.dev10.braylon.models.Customer;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,6 +46,17 @@ public class customerService {
             return;
         }
         cDao.save(customer);
+    }
+
+    List<Customer> getCustomersByUserId(Integer userId) {
+        List<Customer> customers = cDao.findAll();
+        List<Customer> toReturn = new ArrayList();
+        for(Customer c : customers) {
+            if(c.getUser().getUserId() == userId) {
+                toReturn.add(c);
+            }
+        }
+        return toReturn;
     }
     
 }
