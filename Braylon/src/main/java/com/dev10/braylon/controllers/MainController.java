@@ -62,7 +62,7 @@ public abstract class MainController {
         }
     }
     
-    @GetMapping("/customers")
+    @GetMapping("/customer")
     public String loadCustomerView(Model model) {
         List<Customer> custList;
         if(userIsAdmin()) {

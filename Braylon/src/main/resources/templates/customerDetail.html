@@ -21,7 +21,6 @@
     <h1 class="pageTitle">Add/Edit Customer</h1>
     <form method="POST" th:action="${'/customer/' + customer.customerId}">
       <input type="hidden" class="form-control" name="customerId" id="customerId" th:value="${customer.customerId}">
-      <input type="hidden" class="form-control" name="user" id="userId" th:value="${customer.user.userId}" sec:authorize="!hasRole('ROLE_ADMIN')">
       <div class="form-group">
         <label for="customerFirstName">First Name</label>
         <input type="text" class="form-control" name="customerFirstName" id="customerFirstName"
@@ -57,7 +56,7 @@
         <label for="userSelect">Sales Rep.</label>
         <select class="form-control" id="userSelect" name="user">
           <option selected value="100" th:value="0" th:selected="${customer.user == null}">- Select -</option>
-          <option th:each="user : ${users}" th:text="${user.firstName + ' ' + user.lastName}" th:value="${user.userID}"
+          <option th:each="user : ${users}" th:text="${user.firstName + ' ' + user.lastName}" th:value="${user.userId}"
             th:selected="${user.equals(customer.user)}">
             Sally SalesRep</option>
         </select>
