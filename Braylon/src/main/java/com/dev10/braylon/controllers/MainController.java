@@ -76,7 +76,7 @@ public abstract class MainController {
     @GetMapping("/addCustomer/{username}")
     public String loadAddingCustomer(@PathVariable String username, Model model) {
         if (userIsAdmin()) {
-            model.addAttribute("salesReps", uServ.findAllSalesReps());
+            model.addAttribute("users", uServ.findAllSalesReps());
         }
         Customer customer = new Customer();
         model.addAttribute("customer", customer);
