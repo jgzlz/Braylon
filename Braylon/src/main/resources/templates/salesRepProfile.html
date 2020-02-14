@@ -19,13 +19,12 @@
 
     <div class="container">
         <article class="prettyBox">
-            <h1 th:text="${header + ' Sales Representative'}" class="pageTitle"><span
+            <h1 class="pageTitle"><span
                     th:text="${user.firstName + ' ' + user.lastName}">Sally SalesRep</span>'s Profile</h1>
             <p>Username: <span th:text="${user.username}">username</span></p>
             <p>Email Address: <span th:text="${user.email}">email</span></p>
-            <p>Phone Number: <span th:text="${user.phone}">phone#</span></p>
             <hr />
-            <div th:switch="${user.isEnabled}">
+            <div th:switch="${user.enabled}">
                 <p th:case="#{true}" class="text-success tightBox">Enabled</p>
                 <p th:case="#{false}" class="text-danger tightBox">Disabled</p>
                 <p th:case="*" class="text-warning tightBox">Unknown</p>
