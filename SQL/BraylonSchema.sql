@@ -29,39 +29,18 @@ create table customer (
 
 insert into customer values (1, 'Beth', 'Raymond', '123 Main St','123-123-1234','Genesis10','beth@beth.com', 1),(2, 'Joe', 'Gonzalez', '10 Joe Lane','234-123-1245','Joe Gonzalez','Joe@joe.joe', 2);
 
-<<<<<<< HEAD
-create table `order` (
-	order_id int primary key auto_increment,
-||||||| merged common ancestors
-create table `Order` (
-	order_id int primary key auto_increment,
-=======
 create table `bill` (
 	bill_id int primary key auto_increment,
->>>>>>> jnwhite-master
     customer_id int not null,
     bill_date date not null,
     fulfillment_date date,
     `status` varchar(50) not null,
     price decimal not null,
-<<<<<<< HEAD
---     user_id int not null,
---     foreign key (user_id) references `user`(user_id),
-||||||| merged common ancestors
-    user_id int not null,
-    foreign key (user_id) references `user`(user_id),
-=======
->>>>>>> jnwhite-master
+
     foreign key (customer_id) references customer(customer_id)
 );
 
-<<<<<<< HEAD
-insert into `order` values (1,1,'2020-02-12','2020-03-12','pending','20123.12','1'),(2,2,'2020-02-12','2020-03-12','pending','1234.12','2'),(3,1,'2020-02-12','2020-03-12','pending','5342.12','2'),(4,2,'2020-02-12','2020-03-12','pending','2123.12','3');
-||||||| merged common ancestors
-insert into `Order` values (1,1,'2020-02-12','2020-03-12','pending','20123.12','1'),(2,2,'2020-02-12','2020-03-12','pending','1234.12','2'),(3,1,'2020-02-12','2020-03-12','pending','5342.12','2'),(4,2,'2020-02-12','2020-03-12','pending','2123.12','3');
-=======
 insert into `bill` values (1,1,'2020-02-12','2020-03-12','pending','20123.12'),(2,2,'2020-02-12','2020-03-12','pending','1234.12'),(3,1,'2020-02-12','2020-03-12','pending','5342.12'),(4,2,'2020-02-12','2020-03-12','pending','2123.12');
->>>>>>> jnwhite-master
 
 create table `role`(
 	role_id int primary key auto_increment,

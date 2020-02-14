@@ -1,9 +1,11 @@
 body{
-    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(226,226,226,1)), color-stop(50%, rgba(219,219,219,1)), color-stop(51%, rgba(209,209,209,1)), color-stop(100%, rgba(254,254,254,1)));
-    background: -webkit-linear-gradient(left, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
-    background: -o-linear-gradient(left, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
-    background: -ms-linear-gradient(left, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
-    background: linear-gradient(to right, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+    background: rgba(226,226,226,1);
+    background: -moz-linear-gradient(left, rgba(226,226,226,1) 0%, rgba(254,254,254,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(226,226,226,1)), color-stop(100%, rgba(254,254,254,1)));
+    background: -webkit-linear-gradient(left, rgba(226,226,226,1) 0%, rgba(254,254,254,1) 100%);
+    background: -o-linear-gradient(left, rgba(226,226,226,1) 0%, rgba(254,254,254,1) 100%);
+    background: -ms-linear-gradient(left, rgba(226,226,226,1) 0%, rgba(254,254,254,1) 100%);
+    background: linear-gradient(to right, rgba(226,226,226,1) 0%, rgba(254,254,254,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe', GradientType=1 );
 }
 
@@ -18,7 +20,7 @@ body{
 /* sets all website table rows to be alternating colors  */
 tbody > tr:nth-of-type(even),
 .row-striped:nth-of-type(even){
-    background: linear-gradient(to right, #b4b288, #ada95d 50%);
+    background: linear-gradient(to right, #bbbbab, #a09d66 50%);
     color: floralwhite;
 }
 tbody > tr:nth-of-type(odd),
@@ -42,10 +44,12 @@ tbody > tr:nth-of-type(odd) a:not(.btn){
 /* fixes buttons on alternating color table rows */
 
 /* adds a box shadow to all site tables */
-table{
-    -moz-box-shadow:    3px 3px 5px 6px #ccc;
-    -webkit-box-shadow: 3px 3px 5px 6px #ccc;
-    box-shadow:         3px 3px 5px 6px #ccc;
+table,
+.container > form,
+.prettyBox {
+    -moz-box-shadow:    6px 6px 3px 4px #ccc;
+    -webkit-box-shadow: 6px 6px 3px 4px #ccc;
+    box-shadow:         6px 6px 3px 4px #ccc;
 }
 
 /* a bolding class for all page titles */
@@ -57,4 +61,25 @@ table{
 text color changes. */
 .btn{
     color: floralWhite !important;
+}
+
+/* sets form colors */
+.container > form,
+.prettyBox {
+    margin: 2% 0% 5% 0%;
+    padding: 2% 1.5%;
+    border: 2px solid rgb(53, 1, 1);
+    background: linear-gradient(to bottom, #d8d8d8, #bdbcaa 50%);
+}
+
+/* sets error colors */
+.error{
+    color: red;
+}
+
+/* creates a tight box for displaying singular pieces of information */
+.tightBox{
+    border: 1px solid black;
+    background-color: white;
+    display: inline-block;
 }

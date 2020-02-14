@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,12 +41,12 @@
                 </thead>
                 <tbody>
                     <tr th:each="order : ${orders}">
-                        <td th:text="${order.orderId}">text</td>
+                        <td th:text="${order.billId}">text</td>
                         <td th:text="${order.customer.customerId}">text</td>
                         <td th:text="${order.customer.customerFirstName}">text</td>
                         <td th:text="${order.customer.customerLastName}">text</td>
                         <td th:text="${order.customer.companyName}">text</td>
-                        <td th:text="${order.orderDate}">text</td>
+                        <td th:text="${order.billDate}">text</td>
                         <td th:text="${order.fulfillmentDate}">text</td>
                         <td th:text="${order.status}">text</td>
                         <td th:text="${order.price}">text</td>
@@ -115,4 +114,5 @@
     </div>
 
 </body>
+
 </html>
