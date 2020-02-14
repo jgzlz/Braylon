@@ -29,19 +29,18 @@ create table customer (
 
 insert into customer values (1, 'Beth', 'Raymond', '123 Main St','123-123-1234','Genesis10','beth@beth.com', 1),(2, 'Joe', 'Gonzalez', '10 Joe Lane','234-123-1245','Joe Gonzalez','Joe@joe.joe', 2);
 
-create table `Order` (
-	order_id int primary key auto_increment,
+create table `bill` (
+	bill_id int primary key auto_increment,
     customer_id int not null,
-    order_date date not null,
+    bill_date date not null,
     fulfillment_date date,
     `status` varchar(50) not null,
     price decimal not null,
-    user_id int not null,
-    foreign key (user_id) references `user`(user_id),
+
     foreign key (customer_id) references customer(customer_id)
 );
 
-insert into `Order` values (1,1,'2020-02-12','2020-03-12','pending','20123.12','1'),(2,2,'2020-02-12','2020-03-12','pending','1234.12','2'),(3,1,'2020-02-12','2020-03-12','pending','5342.12','2'),(4,2,'2020-02-12','2020-03-12','pending','2123.12','3');
+insert into `bill` values (1,1,'2020-02-12','2020-03-12','pending','20123.12'),(2,2,'2020-02-12','2020-03-12','pending','1234.12'),(3,1,'2020-02-12','2020-03-12','pending','5342.12'),(4,2,'2020-02-12','2020-03-12','pending','2123.12');
 
 create table `role`(
 	role_id int primary key auto_increment,
@@ -58,7 +57,7 @@ create table user_role(
 	foreign key (role_id) references Role(role_id)
 );
 
-insert into user_role values (1,1),(1,2),(2,1);
+insert into user_role values (1,1),(1,2),(2,2),(3,2);
     
 create table `product` (
 	product_id int primary key auto_increment,
@@ -70,14 +69,14 @@ create table `product` (
 
 insert into `product` values (1,'Screen',23,1234.12),(2,'Camera',53,4534.12),(3,'Light',233,123.12);
 
-create table order_product(
-	order_id int not null,
+create table bill_product(
+	bill_id int not null,
     product_id int not null,
-    foreign key (order_id) references `order`(order_id),
+    foreign key (bill_id) references `bill`(bill_id),
     foreign key (product_id) references product(product_id)
 );
 
-insert into order_product values (1,1),(1,2),(1,3),(2,1),(2,3),(3,1),(4,1),(4,2);
+insert into bill_product values (1,1),(1,2),(1,3),(2,1),(2,3),(3,1),(4,1),(4,2);
 
 create table sales_visit (
 	sales_visit_id int primary key auto_increment,

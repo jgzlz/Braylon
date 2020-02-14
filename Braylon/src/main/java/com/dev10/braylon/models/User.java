@@ -7,10 +7,8 @@ package com.dev10.braylon.models;
 
 import java.util.List;
 import java.util.Objects;
-import com.dev10.braylon.models.Role;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,6 +16,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 /**
  *
@@ -48,16 +48,14 @@ public class User {
     @Column(nullable = false)
     private String username;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @ManyToMany
     @JoinTable(name = "user_role",
     joinColumns = {
     @JoinColumn(name = "user_id")},
     inverseJoinColumns = {
     @JoinColumn(name = "role_id")})
     private List<Role> roles;
-
-    @OneToMany(mappedBy="user")
-    private List<Order> orders;
 
     public Integer getUserId() {
         return userId;
@@ -123,26 +121,17 @@ public class User {
         this.roles = roles;
     }
 
-    public List<Order> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
-    }
-
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 29 * hash + Objects.hashCode(this.userId);
-        hash = 29 * hash + Objects.hashCode(this.email);
-        hash = 29 * hash + Objects.hashCode(this.password);
-        hash = 29 * hash + (this.enabled ? 1 : 0);
-        hash = 29 * hash + Objects.hashCode(this.firstName);
-        hash = 29 * hash + Objects.hashCode(this.lastName);
-        hash = 29 * hash + Objects.hashCode(this.username);
-        hash = 29 * hash + Objects.hashCode(this.roles);
-        hash = 29 * hash + Objects.hashCode(this.orders);
+        int hash = 3;
+        hash = 53 * hash + Objects.hashCode(this.userId);
+        hash = 53 * hash + Objects.hashCode(this.email);
+        hash = 53 * hash + Objects.hashCode(this.password);
+        hash = 53 * hash + (this.enabled ? 1 : 0);
+        hash = 53 * hash + Objects.hashCode(this.firstName);
+        hash = 53 * hash + Objects.hashCode(this.lastName);
+        hash = 53 * hash + Objects.hashCode(this.username);
+        hash = 53 * hash + Objects.hashCode(this.roles);
         return hash;
     }
 
@@ -182,11 +171,10 @@ public class User {
         if (!Objects.equals(this.roles, other.roles)) {
             return false;
         }
-        if (!Objects.equals(this.orders, other.orders)) {
-            return false;
-        }
         return true;
     }
+
+
 
 
 }

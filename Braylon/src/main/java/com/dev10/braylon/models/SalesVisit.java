@@ -40,10 +40,6 @@ public class SalesVisit {
     @Column(nullable = false)
     private String notes;
 
-//    @ManyToOne
-//    @JoinColumn(name = "orderId")
-//    private Order order;
-
     public Integer getSalesVisitId() {
         return salesVisitId;
     }

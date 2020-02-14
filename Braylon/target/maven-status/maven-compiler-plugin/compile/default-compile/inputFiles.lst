@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\Marcus\Desktop\taskbar buttons\NOTES\gen10\BraylonSite2\Braylon\Braylon\src\main\java\com\dev10\braylon\data\ProductDao.java
 C:\Users\Marcus\Desktop\taskbar buttons\NOTES\gen10\BraylonSite2\Braylon\Braylon\src\main\java\com\dev10\braylon\data\UserDao.java
 C:\Users\Marcus\Desktop\taskbar buttons\NOTES\gen10\BraylonSite2\Braylon\Braylon\src\main\java\com\dev10\braylon\App.java
@@ -22,3 +23,29 @@ C:\Users\Marcus\Desktop\taskbar buttons\NOTES\gen10\BraylonSite2\Braylon\Braylon
 C:\Users\Marcus\Desktop\taskbar buttons\NOTES\gen10\BraylonSite2\Braylon\Braylon\src\main\java\com\dev10\braylon\models\User.java
 C:\Users\Marcus\Desktop\taskbar buttons\NOTES\gen10\BraylonSite2\Braylon\Braylon\src\main\java\com\dev10\braylon\models\Order.java
 C:\Users\Marcus\Desktop\taskbar buttons\NOTES\gen10\BraylonSite2\Braylon\Braylon\src\main\java\com\dev10\braylon\models\Role.java
+=======
+/Users/nicolasgraese/Braylon/Braylon/src/main/java/com/dev10/braylon/data/UserDao.java
+/Users/nicolasgraese/Braylon/Braylon/src/main/java/com/dev10/braylon/data/ProductDao.java
+/Users/nicolasgraese/Braylon/Braylon/src/main/java/com/dev10/braylon/models/Product.java
+/Users/nicolasgraese/Braylon/Braylon/src/main/java/com/dev10/braylon/service/customerService.java
+/Users/nicolasgraese/Braylon/Braylon/src/main/java/com/dev10/braylon/models/User.java
+/Users/nicolasgraese/Braylon/Braylon/src/main/java/com/dev10/braylon/models/MyUserDetails.java
+/Users/nicolasgraese/Braylon/Braylon/src/main/java/com/dev10/braylon/service/billService.java
+/Users/nicolasgraese/Braylon/Braylon/src/main/java/com/dev10/braylon/service/MyUserDetailsService.java
+/Users/nicolasgraese/Braylon/Braylon/src/main/java/com/dev10/braylon/models/Bill.java
+/Users/nicolasgraese/Braylon/Braylon/src/main/java/com/dev10/braylon/controllers/MainController.java
+/Users/nicolasgraese/Braylon/Braylon/src/main/java/com/dev10/braylon/data/RoleDao.java
+/Users/nicolasgraese/Braylon/Braylon/src/main/java/com/dev10/braylon/security/SecurityWebApplicationInitializer.java
+/Users/nicolasgraese/Braylon/Braylon/src/main/java/com/dev10/braylon/security/SecurityConfiguration.java
+/Users/nicolasgraese/Braylon/Braylon/src/main/java/com/dev10/braylon/service/productService.java
+/Users/nicolasgraese/Braylon/Braylon/src/main/java/com/dev10/braylon/controllers/loginController.java
+/Users/nicolasgraese/Braylon/Braylon/src/main/java/com/dev10/braylon/models/Role.java
+/Users/nicolasgraese/Braylon/Braylon/src/main/java/com/dev10/braylon/data/SalesVisitDao.java
+/Users/nicolasgraese/Braylon/Braylon/src/main/java/com/dev10/braylon/data/BillDao.java
+/Users/nicolasgraese/Braylon/Braylon/src/main/java/com/dev10/braylon/data/CustomerDao.java
+/Users/nicolasgraese/Braylon/Braylon/src/main/java/com/dev10/braylon/models/SalesVisit.java
+/Users/nicolasgraese/Braylon/Braylon/src/main/java/com/dev10/braylon/service/userService.java
+/Users/nicolasgraese/Braylon/Braylon/src/main/java/com/dev10/braylon/models/Customer.java
+/Users/nicolasgraese/Braylon/Braylon/src/main/java/com/dev10/braylon/App.java
+/Users/nicolasgraese/Braylon/Braylon/src/main/java/com/dev10/braylon/service/salesVisitService.java
+>>>>>>> 022d147dd03f18071d35a47ce9ceac02f20d5ecd

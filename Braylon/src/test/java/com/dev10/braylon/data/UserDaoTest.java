@@ -51,7 +51,7 @@ public class UserDaoTest {
      */
     @Test
     public void testFindSalesRepCount() {
-//        assertEquals(userDao.findSalesRepCount().intValue(), 3);
+        assertEquals(userDao.findSalesRepCount().intValue(), 3);
     }
 
     /**
@@ -69,5 +69,4 @@ public class UserDaoTest {
     public void testFindRoleByUsername() {
         assertEquals("ROLE_ADMIN",userDao.findRoleByUsername("Mayzer"));
     }
-
 }
