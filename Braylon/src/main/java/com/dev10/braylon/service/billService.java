@@ -27,6 +27,12 @@ public class billService {
         dao.save(bill);
     }
     
+    public List<Bill> findAllBills() {
+        
+        return dao.findAll();
+        
+    }
+    
     public List<Bill> findAllBillsByUsername(String username) {
         
         List<Customer> customers = cDao.findAllCustomersByUserUsername(username);

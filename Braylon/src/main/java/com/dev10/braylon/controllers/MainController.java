@@ -12,7 +12,6 @@ import com.dev10.braylon.service.productService;
 import com.dev10.braylon.service.salesVisitService;
 import com.dev10.braylon.service.userService;
 import java.security.Principal;
-import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -48,8 +47,10 @@ public abstract class MainController {
     @GetMapping("/home")
     public String loadHomePage(Model model) {
         if (userIsAdmin()) {
-            model.addAttribute("orders", new ArrayList());
-            model.addAttribute("salesVisits", new ArrayList());
+            List<Bill> allBills = bServ.findAllBills();
+            List<SalesVisit> allSalesVisits = svServ.findAllSalesVisits();
+            model.addAttribute("orders", allBills);
+            model.addAttribute("salesVisits", allSalesVisits);
             return "home";
         } else {
             List<SalesVisit> visits = uServ.findAllSalesVisitsByUsername(currentUser.getUsername());
@@ -162,17 +163,17 @@ public abstract class MainController {
     }
 
     //Adding Bill
-    @GetMapping("/addBill")
-    public String viewAddBill(Model model, Bill bill) {
+    @GetMapping("/addOrder/{username}")
+    public String viewAddBill(@PathVariable String username, Model model, Bill bill) {
         List<Customer> customers = cServ.findAllCustomersByUsername(currentUser.getUsername());
         model.addAttribute("customers", customers);
         List<Product> products = pServ.findAllProducts();
         model.addAttribute("products", products);
-        return "billDetail";
+        return "orderAdd";
     }
 
-    @PostMapping("/addBill")
-    public String processAddBill(Principal principal, Bill bill) {
+    @PostMapping("/addOrder/{username}")
+    public String processAddBill(@PathVariable String username, Bill bill) {
         bServ.addBill(bill);
         return "redirect:/home";
     }
