@@ -47,8 +47,8 @@
                 <select class="form-control" id="customerSelect" name="customer">
                     <option selected value="100" th:value="0" th:selected="${bill.customer == null}">- Select -
                     </option>
-                    <option th:each="customer : ${customers}" th:text="${customer.firstName + ' ' + customer.lastName}"
-                        th:value="${customer.customerID}" th:selected="${customer.equals(bill.customer)}">
+                    <option th:each="customer : ${customers}" th:text="${customer.customerFirstName + ' ' + customer.customerLastName}"
+                        th:value="${customer.customerId}" th:selected="${customer.equals(bill.customer)}">
                         Sally SalesRep</option>
                 </select>
                 <div th:if="${#fields.hasErrors('bill.customer')}">
@@ -62,9 +62,9 @@
                     <select multiple id="products" name="productId" 
                             class="form-control">
                         <option th:each="product : ${products}" 
-                                th:value="${product.id}" 
-                                th:text="${product.name}"
-                                th:selected="${order.products.contains(product)}">
+                                th:value="${product.productId}" 
+                                th:text="${product.productName}"
+                                th:selected="${bill.products.contains(product)}">
                             Product Name</option>
                     </select>
                 </div>

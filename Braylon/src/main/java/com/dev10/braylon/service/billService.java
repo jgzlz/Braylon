@@ -27,6 +27,12 @@ public class billService {
         dao.save(bill);
     }
     
+    public Bill findBillByBillId(int billId) {
+        Bill bill = dao.findById(billId).orElse(null);
+        
+        return bill;
+    }
+    
     public List<Bill> findAllBills() {
         
         return dao.findAll();

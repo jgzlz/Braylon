@@ -11,7 +11,6 @@ import com.dev10.braylon.service.billService;
 import com.dev10.braylon.service.productService;
 import com.dev10.braylon.service.salesVisitService;
 import com.dev10.braylon.service.userService;
-import java.security.Principal;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -174,6 +173,25 @@ public abstract class MainController {
 
     @PostMapping("/addOrder/{username}")
     public String processAddBill(@PathVariable String username, Bill bill) {
+        
+        bServ.addBill(bill);
+        return "redirect:/home";
+    }
+    
+    //Editing Bill
+    @GetMapping("/editOrder/{username}/{billId}")
+    public String viewEditBill(@PathVariable String username, @PathVariable int billId, Model model, Bill bill) {
+        Bill myBill = bServ.findBillByBillId(billId);
+        List<Customer> customers = cServ.findAllCustomersByUsername(currentUser.getUsername());
+        model.addAttribute("bill", myBill);
+        model.addAttribute("customers", customers);
+        List<Product> products = pServ.findAllProducts();
+        model.addAttribute("products", products);
+        return "orderDetail";
+    }
+
+    @PostMapping("/editOrder/{username}")
+    public String processEditBill(@PathVariable String username, Bill bill) {
         bServ.addBill(bill);
         return "redirect:/home";
     }

@@ -6,12 +6,13 @@
 package com.dev10.braylon.models;
 
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,6 +20,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -36,10 +38,12 @@ public class Bill {
     private Customer customer;
     
     @Column(nullable = false)
-    private LocalDateTime billDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate billDate;
 
     @Column(nullable = false)
-    private LocalDateTime fulfillmentDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate fulfillmentDate;
 
     @Column(nullable = false)
     private String status;
@@ -51,7 +55,7 @@ public class Bill {
     @JoinTable(name = "bill_product",
     joinColumns = {@JoinColumn(name = "bill_id")},
     inverseJoinColumns = {@JoinColumn(name = "product_id")})
-    private List<Product> products;
+    private List<Product> products = new ArrayList<>();
 
     public Integer getBillId() {
         return billId;
@@ -69,21 +73,22 @@ public class Bill {
         this.customer = customer;
     }
 
-    public LocalDateTime getBillDate() {
+    public LocalDate getBillDate() {
         return billDate;
     }
 
-    public void setBillDate(LocalDateTime billDate) {
+    public void setBillDate(LocalDate billDate) {
         this.billDate = billDate;
     }
 
-    public LocalDateTime getFulfillmentDate() {
+    public LocalDate getFulfillmentDate() {
         return fulfillmentDate;
     }
 
-    public void setFulfillmentDate(LocalDateTime fulfillmentDate) {
+    public void setFulfillmentDate(LocalDate fulfillmentDate) {
         this.fulfillmentDate = fulfillmentDate;
     }
+
 
     public String getStatus() {
         return status;
@@ -111,14 +116,14 @@ public class Bill {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 17 * hash + Objects.hashCode(this.billId);
-        hash = 17 * hash + Objects.hashCode(this.customer);
-        hash = 17 * hash + Objects.hashCode(this.billDate);
-        hash = 17 * hash + Objects.hashCode(this.fulfillmentDate);
-        hash = 17 * hash + Objects.hashCode(this.status);
-        hash = 17 * hash + Objects.hashCode(this.price);
-        hash = 17 * hash + Objects.hashCode(this.products);
+        int hash = 7;
+        hash = 43 * hash + Objects.hashCode(this.billId);
+        hash = 43 * hash + Objects.hashCode(this.customer);
+        hash = 43 * hash + Objects.hashCode(this.billDate);
+        hash = 43 * hash + Objects.hashCode(this.fulfillmentDate);
+        hash = 43 * hash + Objects.hashCode(this.status);
+        hash = 43 * hash + Objects.hashCode(this.price);
+        hash = 43 * hash + Objects.hashCode(this.products);
         return hash;
     }
 
@@ -157,5 +162,7 @@ public class Bill {
         }
         return true;
     }
+
+    
     
 }
