@@ -50,7 +50,7 @@
                         Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./salesRep.html" th:href="${'/salesRep/'}">
+                    <a class="nav-link" href="./salesRep.html" th:href="${'/salesRep/'}" sec:authorize="hasRole('ROLE_ADMIN')">
                         Sales Rep.
                     </a>
                 </li>
