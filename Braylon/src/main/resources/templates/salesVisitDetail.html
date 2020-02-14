@@ -39,16 +39,16 @@
             </div>
             <div class="form-group col">
                 <!-- turn into customer select based on user -->
-                <label for="customerSelect">Sales Rep.</label>
+                <label for="customerSelect">Customer</label>
                 <select class="form-control" id="customerSelect" name="customer">
-                    <option selected value="100" th:value="0" th:selected="${salesvisit.customer == null}">- Select -
+                    <option selected value="100" th:value="0" th:selected="${salesVisit.customer == null}">- Select -
                     </option>
-                    <option th:each="customer : ${customers}" th:text="${customer.firstName + ' ' + customer.lastName}"
-                        th:value="${customer.customerID}" th:selected="${customer.equals(salesvisit.customer)}">
+                    <option th:each="customer : ${customers}" th:text="${customer.customerFirstName + ' ' + customer.customerLastName}"
+                        th:value="${customer.customerId}" th:selected="${customer.equals(salesVisit.customer)}">
                         Sally SalesRep</option>
                 </select>
-                <div th:if="${#fields.hasErrors('salesvisit.customer')}">
-              <p th:each="error : ${#fields.errors('salesvisit.customer')}" class="alert alert-danger" th:text="${error}">
+                <div th:if="${#fields.hasErrors('salesVisit.customer')}">
+              <p th:each="error : ${#fields.errors('salesVisit.customer')}" class="alert alert-danger" th:text="${error}">
                   Bad name </p>
           </div>
         </div>

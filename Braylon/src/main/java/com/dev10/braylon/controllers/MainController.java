@@ -112,16 +112,16 @@ public abstract class MainController {
     }
 
     //Adding SalesRep
-    @GetMapping("/addSalesRep")
-    public String loadAddingSalesRep(Model model) {
+    @GetMapping("/addSalesRep/{username}")
+    public String loadAddingSalesRep(Model model, @PathVariable String username) {
         User user = new User();
         model.addAttribute("user", user);
         model.addAttribute("header", "Add");
         return "salesRepDetail";
     }
 
-    @PostMapping("/addSalesRep")
-    public String addNewSalesRep(User user) {
+    @PostMapping("/addSalesRep/{username}")
+    public String addNewSalesRep(User user, @PathVariable String username) {
         user.setPassword(encoder.encode(user.getPassword()));
         uServ.addUser(user);
         return "redirect:/home";

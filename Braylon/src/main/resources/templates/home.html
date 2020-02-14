@@ -97,7 +97,7 @@
             <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="${'/addSalesRep/'+#authentication.name}"
                 class="btn btn-primary">Add Sales Representative</a>
             <a th:href="${'/addCustomer/'+#authentication.name}" class="btn btn-primary">Add Customer</a>
-            <a th:href="${'/addSalesVisit/'+#authentication.name}" class="btn btn-primary">Add Sales Visit</a>
+            <a th:href="${'/addSalesVisit/'+#authentication.name}" class="btn btn-primary" sec:authorize="!hasRole('ROLE_ADMIN')">Add Sales Visit</a>
             <a th:href="${'/addOrder/'+#authentication.name}" class="btn btn-primary">Add Order</a>
         </div>
     </div>
