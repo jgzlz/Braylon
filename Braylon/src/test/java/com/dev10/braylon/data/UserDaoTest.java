@@ -6,11 +6,7 @@
 package com.dev10.braylon.data;
 
 import com.dev10.braylon.models.User;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
 import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,22 +27,6 @@ public class UserDaoTest {
     public UserDaoTest() {
     }
 
-    @BeforeAll
-    public static void setUpClass() {
-    }
-
-    @AfterAll
-    public static void tearDownClass() {
-    }
-
-    @BeforeEach
-    public void setUp() {
-    }
-
-    @AfterEach
-    public void tearDown() {
-    }
-
     /**
      * Test of findUserByUsername method, of class UserDao.
      */
@@ -54,7 +34,6 @@ public class UserDaoTest {
     public void testFindUserByUsername() {
         User mayzer = userDao.findUserByUsername("Mayzer");
         User jake = userDao.findUserByUsername("Jake");
-        User marcus = userDao.findUserByUsername("Marcus");
 
         assertEquals(mayzer.getEmail(), "mayzer@mayzer.com");
         assertEquals(mayzer.getFirstName(), "Mayzer");
@@ -68,15 +47,27 @@ public class UserDaoTest {
     }
 
     /**
+     * Test of findSalesRepCount method, of class UserDao.
+     */
+    @Test
+    public void testFindSalesRepCount() {
+//        assertEquals(userDao.findSalesRepCount().intValue(), 3);
+    }
+
+    /**
+     * Test of findAllSalesReps method, of class UserDao.
+     */
+    @Test
+    public void testFindAllSalesReps() {
+        assertEquals(3, userDao.findAllSalesReps().size());
+    }
+
+    /**
      * Test of findRoleByUsername method, of class UserDao.
      */
     @Test
     public void testFindRoleByUsername() {
-//        assertEquals(userDao.findRoleByUsername("Mayzer"), this);
-//        assertEquals(userDao.findRoleByUsername("Jake"), this);
-//        assertEquals(userDao.findRoleByUsername("Marcus"), this);
-//          This method is void?         
-
+        assertEquals("ROLE_ADMIN",userDao.findRoleByUsername("Mayzer"));
     }
 
 }
