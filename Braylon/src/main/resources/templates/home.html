@@ -53,7 +53,7 @@
                         <td>
                             <a class="btn btn-danger" href="#" th:href="${'/deleteOrder/'+#authentication.name}"
                                 sec:authorize="isAuthenticated()">Delete</a>
-                            <a class="btn btn-secondary" href="#" th:href="${'/editOrder/'+#authentication.name}"
+                            <a class="btn btn-secondary" href="#" th:href="${'/editOrder/'+#authentication.name + '/' + order.billId}"
                                 sec:authorize="isAuthenticated()">View/Edit</a>
                         </td>
                     </tr>

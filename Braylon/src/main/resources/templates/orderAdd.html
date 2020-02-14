@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <div th:replace="~{shared :: head(title='Order Detail')}">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Braylon Enterprises -- Order Detail</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+            integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="../static/css/theme.css">
+    </div>
+    <link rel="stylesheet" type="text/css" th:href="'/css/customerDetail.css'" href="../static/css/customerDetail.css">
+</head>
+
+<body>
+    <div th:replace="~{shared :: nav}"></div>
+
+    <div class="container">
+        <h1 class="pageTitle">Add Order</h1>
+        <form method="POST" th:action="${'/addOrder/'+#authentication.name}" th:object=${bill}>            
+            <div class="form-group">
+                <label for="userName">Date Requested</label>
+                <input type="date" class="form-control" th:field="${bill.billDate}"
+                    aria-describedby="billDateHelp" placeholder="02-12-2020">
+            </div>
+            <div class="form-group">
+                <label for="bill.fulfillmentDate">Date Fulfilled</label>
+                <input type="date" class="form-control" th:field="${bill.fulfillmentDate}"
+                    aria-describedby="fulfillmentDateHelp" placeholder="02-12-2020">
+            </div>
+            <div class="form-group">
+                <label for="bill.status">Status</label>
+                <input type="text" class="form-control" aria-describedby="statusHelp"
+                    placeholder="Enter status" th:field="${bill.status}">
+            </div>
+            <div class="form-group">
+                <label for="bill.price">Price</label>
+                <input type="number" class="form-control" aria-describedby="billPriceHelp"
+                    placeholder="Enter price" th:field="${bill.price}">
+            </div>
+            <div class="form-group col">
+                <!-- customers single select, products multiselect -->
+                <label for="customerSelect">Customer</label>
+                <select class="form-control" id="customerSelect" name="customer">
+                    <option selected value="100" th:value="0" th:selected="${bill.customer == null}">- Select -
+                    </option>
+                    <option th:each="customer : ${customers}" th:text="${customer.customerFirstName + ' ' + customer.customerLastName}"
+                        th:value="${customer.customerId}" th:selected="${customer.equals(bill.customer)}">
+                        Sally SalesRep</option>
+                </select>
+<!--                <div th:if="${#fields.hasErrors('customer')}">
+                    <p th:each="error : ${#fields.errors('customer')}" class="alert alert-danger" th:text="${error}">
+                        Bad name </p>
+                </div>-->
+              </div>
+              <div class="form-group row">
+                <label for="products" class="col-3 col-form-label">Products</label>
+                <div class="col-9">
+                    <select multiple id="products" th:name="products" 
+                            class="form-control">
+                        <option th:each="product : ${products}" 
+                                th:value="${product.productId}" 
+                                th:text="${product.productName}"
+                                th:selected="${bill.products.contains(product)}">
+                            Product Name</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <div th:replace="~{shared :: jsPlugins}"></div>
+</body>
+
+</html>
