@@ -75,11 +75,10 @@ public abstract class MainController {
     //Adding Customer
     @GetMapping("/addCustomer/{username}")
     public String loadAddingCustomer(@PathVariable String username, Model model) {
-        if(userIsAdmin()) {
+        if (userIsAdmin()) {
             model.addAttribute("users", uServ.findAllSalesReps());
         }
         Customer customer = new Customer();
-        model.addAttribute("customer", customer);
         model.addAttribute("customer", customer);
         model.addAttribute("header", "add");
         return "customerDetail";
@@ -87,6 +86,8 @@ public abstract class MainController {
 
     @PostMapping("/addCustomer/{username}")
     public String addNewCustomer(@PathVariable String username, Customer customer) {
+        User user = uServ.findUserByUsername(username);
+        customer.setUser(user);
         cServ.addCustomer(customer);
         return "redirect:/home";
     }
