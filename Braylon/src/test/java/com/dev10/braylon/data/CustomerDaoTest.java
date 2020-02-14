@@ -30,6 +30,7 @@ public class CustomerDaoTest {
      */
     @Test
     public void testFindAllCustomersByUserUsername() {
+       
     }
 
     /**
@@ -46,6 +47,4 @@ public class CustomerDaoTest {
     public void testFindAllCustomersByUserUserIdIsNull() {
     }
 
-  
-    
 }

@@ -5,10 +5,9 @@
  */
 package com.dev10.braylon.data;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
+import java.time.LocalDate;
+import java.time.Month;
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,34 +21,20 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
 public class SalesVisitDaoTest {
-    
+
     @Autowired
     private SalesVisitDao salesVisitDao;
-    
+
     public SalesVisitDaoTest() {
     }
-    
-    @BeforeAll
-    public static void setUpClass() {
-    }
-    
-    @AfterAll
-    public static void tearDownClass() {
-    }
-    
-    @BeforeEach
-    public void setUp() {
-    }
-    
-    @AfterEach
-    public void tearDown() {
-    }
+
 
     /**
      * Test of findSalesVisitsAfter method, of class SalesVisitDao.
      */
     @Test
     public void testFindSalesVisitsAfter() {
+        assertEquals(salesVisitDao.findSalesVisitsAfter(LocalDate.of(2020, Month.FEBRUARY, 15)).size(), 3);
     }
 
     /**
@@ -57,6 +42,7 @@ public class SalesVisitDaoTest {
      */
     @Test
     public void testFindSalesVisitsByUserAfter() {
+        assertEquals(2, salesVisitDao.findSalesVisitsByUserAfter("Jake", LocalDate.of(2020, Month.FEBRUARY, 13)).size());
     }
 
     /**
@@ -64,6 +50,9 @@ public class SalesVisitDaoTest {
      */
     @Test
     public void testFindSalesByUsername() {
+        assertEquals(2, salesVisitDao.findSalesByUsername("Mayzer").size());
+        assertEquals(2, salesVisitDao.findSalesByUsername("Jake").size());
+        assertEquals(1, salesVisitDao.findSalesByUsername("Marcus").size());
     }
-    
+
 }

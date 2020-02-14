@@ -7,6 +7,7 @@ package com.dev10.braylon.data;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,25 +23,25 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
 public class RoleDaoTest {
-    
+
     @Autowired
     private RoleDao roleDao;
-    
+
     public RoleDaoTest() {
     }
-    
+
     @BeforeAll
     public static void setUpClass() {
     }
-    
+
     @AfterAll
     public static void tearDownClass() {
     }
-    
+
     @BeforeEach
     public void setUp() {
     }
-    
+
     @AfterEach
     public void tearDown() {
     }
@@ -50,8 +51,11 @@ public class RoleDaoTest {
      */
     @Test
     public void testFindRoleByRole() {
+        // Is testing this redundant? 
+        assertEquals(roleDao.findRoleByRole("ROLE_ADMIN").getRole(), "ROLE_ADMIN");
+        assertEquals(roleDao.findRoleByRole("ROLE_USER").getRole(), "ROLE_USER");
+        assertNull(roleDao.findRoleByRole("THIS AINT IT"));
+
     }
 
-   
-    
 }
