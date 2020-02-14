@@ -1,14 +1,14 @@
 package com.dev10.braylon.controllers;
 
 
-import com.dev10.braylon.models.Order;
+import com.dev10.braylon.models.Bill;
 import com.dev10.braylon.models.Customer;
 import com.dev10.braylon.models.Product;
 import com.dev10.braylon.models.Role;
 import com.dev10.braylon.models.SalesVisit;
 import com.dev10.braylon.models.User;
 import com.dev10.braylon.service.customerService;
-import com.dev10.braylon.service.orderService;
+import com.dev10.braylon.service.billService;
 import com.dev10.braylon.service.productService;
 import com.dev10.braylon.service.salesVisitService;
 import com.dev10.braylon.service.userService;
@@ -32,7 +32,7 @@ public abstract class MainController {
     private customerService cServ;
     
     @Autowired
-    private orderService oServ;
+    private billService bServ;
     
     @Autowired
     private productService pServ;
@@ -55,6 +55,8 @@ public abstract class MainController {
         }
         else {
             List<SalesVisit> visits = uServ.findAllSalesVisitsByUsername(currentUser.getUsername());
+            List<Bill> bills = bServ.findAllBillsByUsername(currentUser.getUsername());
+            model.addAttribute("orders", bills);
             model.addAttribute("salesVisits", visits);
             return "home";
         }
@@ -74,17 +76,18 @@ public abstract class MainController {
     }
     
     //Adding Customer
-    @GetMapping("/addCustomer")
-    public String loadAddingCustomer(Model model) {
+    @GetMapping("/addCustomer/{username}")
+    public String loadAddingCustomer(@PathVariable String username, Model model) {
         if(userIsAdmin()) {
             model.addAttribute("salesReps", uServ.findAllSalesReps());
         }
-        model.addAttribute("customer", null);
+        Customer customer = new Customer();
+        model.addAttribute("customer", customer);
         return "customerDetail";
     }
     
-    @PostMapping("/addCustomer")
-    public String addNewCustomer(Customer customer) {
+    @PostMapping("/addCustomer/{username}")
+    public String addNewCustomer(@PathVariable String username, Customer customer) {
         cServ.addCustomer(customer);
         return "redirect:/home";
     }
@@ -151,19 +154,19 @@ public abstract class MainController {
         return "redirect:/home";
     }
     
-    //Adding Order
-    @GetMapping("/addOrder")
-    public String viewAddOrder(Model model, Order order) {
+    //Adding Bill
+    @GetMapping("/addBill")
+    public String viewAddBill(Model model, Bill bill) {
         List<Customer> customers = cServ.findAllCustomersByUsername(currentUser.getUsername());
         model.addAttribute("customers", customers);
         List<Product> products = pServ.findAllProducts();
         model.addAttribute("products", products);
-        return "orderDetail";
+        return "billDetail";
     }
     
-    @PostMapping("/addOrder")
-    public String processAddOrder(Principal principal, Order order) {
-        oServ.addOrder(order);
+    @PostMapping("/addBill")
+    public String processAddBill(Principal principal, Bill bill) {
+        bServ.addBill(bill);
         return "redirect:/home";
     }
     
