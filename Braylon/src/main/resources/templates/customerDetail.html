@@ -20,7 +20,6 @@
     <h1 class="pageTitle">Add/Edit Customer</h1>
     <form method="POST" th:action="${'/' + header + 'customer/' + customer.customerId}">
       <input type="hidden" class="form-control" name="customerId" id="customerId" th:value="${customer.customerId}">
-      <input type="hidden" class="form-control" name="user" id="userId" th:value="${customer.user.userId}" sec:authorize="!hasRole('ROLE_ADMIN')">
       <div class="form-group">
         <label for="customerFirstName">First Name</label>
         <input type="text" class="form-control" name="customerFirstName" id="customerFirstName"

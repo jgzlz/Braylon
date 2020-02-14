@@ -36,7 +36,7 @@
                     <td th:text="${user.email}">Mark@otto.com</td>
                     <td sec:authorize="hasRole('ROLE_ADMIN')" class="customerLink"><a
                             class="btn btn-warning text-danger" href="./salesRepDetail.html"
-                            th:href="${'/salesRep/' + user.userName}">View/Edit</a></td>
+                            th:href="${'/salesRep/' + user.username}">View/Edit</a></td>
                 </tr>
             </tbody>
         </table>
