@@ -18,9 +18,10 @@
 
   <div class="container">
     <h1 class="pageTitle">Add/Edit Customer</h1>
-    <form method="POST" th:action="${'/' + header + 'customer/' + customer.customerId}">
+    <!-- "${'/' + header + 'customer/' + customer.customerId}" -->
+    <form method="POST" th:action="(${header == 'add'}) ? (${'/addCustomer/' + #authentication.name}) : (${'/editcustomer/' + customer.customerId})">
       <input type="hidden" class="form-control" name="customerId" id="customerId" th:value="${customer.customerId}">
-      <input type="hidden" class="form-control" name="user" id="userId" th:value="${customer.user.userId}" sec:authorize="!hasRole('ROLE_ADMIN')">
+      <input type="hidden" class="form-control" name="user" id="userId" th:value="(${customer.user} == null) ? '' : ${customer.user.userId}" sec:authorize="!hasRole('ROLE_ADMIN')">
       <div class="form-group">
         <label for="customerFirstName">First Name</label>
         <input type="text" class="form-control" name="customerFirstName" id="customerFirstName"

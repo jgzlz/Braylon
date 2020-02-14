@@ -80,13 +80,14 @@ public abstract class MainController {
         }
         Customer customer = new Customer();
         model.addAttribute("customer", customer);
-        model.addAttribute("customer", customer);
         model.addAttribute("header", "add");
         return "customerDetail";
     }
 
     @PostMapping("/addCustomer/{username}")
     public String addNewCustomer(@PathVariable String username, Customer customer) {
+        User user = uServ.findUserByUsername(username);
+        customer.setUser(user);
         cServ.addCustomer(customer);
         return "redirect:/home";
     }
