@@ -8,7 +8,10 @@ package com.dev10.braylon.models;
 //import javax.persistence.Entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,6 +19,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 
 /**
@@ -50,7 +54,21 @@ public class Customer implements Serializable {
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = true)
     private User user;
+    
+    @OneToMany(
+            mappedBy = "customer",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    private List<Bill> bills = new ArrayList<>();
 
+    public List<Bill> getBills() {
+        return bills;
+    }
+
+    public void setBills(List<Bill> bills) {
+        this.bills = bills;
+    }
+    
     public Integer getCustomerId() {
         return customerId;
     }
@@ -117,15 +135,16 @@ public class Customer implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 83 * hash + Objects.hashCode(this.customerId);
-        hash = 83 * hash + Objects.hashCode(this.customerFirstName);
-        hash = 83 * hash + Objects.hashCode(this.customerLastName);
-        hash = 83 * hash + Objects.hashCode(this.companyName);
-        hash = 83 * hash + Objects.hashCode(this.phone);
-        hash = 83 * hash + Objects.hashCode(this.address);
-        hash = 83 * hash + Objects.hashCode(this.email);
-        hash = 83 * hash + Objects.hashCode(this.user);
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.customerId);
+        hash = 97 * hash + Objects.hashCode(this.customerFirstName);
+        hash = 97 * hash + Objects.hashCode(this.customerLastName);
+        hash = 97 * hash + Objects.hashCode(this.companyName);
+        hash = 97 * hash + Objects.hashCode(this.phone);
+        hash = 97 * hash + Objects.hashCode(this.address);
+        hash = 97 * hash + Objects.hashCode(this.email);
+        hash = 97 * hash + Objects.hashCode(this.user);
+        hash = 97 * hash + Objects.hashCode(this.bills);
         return hash;
     }
 
@@ -165,8 +184,16 @@ public class Customer implements Serializable {
         if (!Objects.equals(this.user, other.user)) {
             return false;
         }
+        if (!Objects.equals(this.bills, other.bills)) {
+            return false;
+        }
         return true;
     }
+
+    
+
+
+    
     
 
    

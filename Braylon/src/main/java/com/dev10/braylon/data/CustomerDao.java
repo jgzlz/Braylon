@@ -1,8 +1,6 @@
-
 package com.dev10.braylon.data;
 
 import com.dev10.braylon.models.Customer;
-import com.dev10.braylon.models.Bill;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

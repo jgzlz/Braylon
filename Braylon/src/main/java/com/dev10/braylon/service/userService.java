@@ -74,13 +74,4 @@ public class userService {
         }
         dao.save(user);
     }
-
-    public List<Bill> findAllOrdersById(Integer userId) {
-        List<Bill> orders = new ArrayList();
-        List<Customer> customers = cServ.getCustomersByUserId(userId);
-        for(Customer c : customers) {
-            orders.addAll(oServ.getOrdersByCustId(c.getCustomerId()));
-        }
-        return orders;
-    }
 }
